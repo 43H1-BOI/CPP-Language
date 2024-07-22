@@ -20,7 +20,63 @@
 
 ## Basics
 
-**_Variable and Data Types_**
+**_Input and Output_** :- Let's see a program first then we'll understand each line of code in _detail_.
+
+        1 #include<iostream>
+        2 using namespace std;
+        3
+        4 int main(){
+        5   int age ;
+        6
+        7   cout << "Enter Your Age : ";
+        8   cin >> age ;
+        9
+        10  cout << "WOW! You are " << age << " Years Old." << endl;
+        11
+        12  return 0;
+        13 }
+
+_"Don't Worry if you won't understand any of these things , We'll talk about them in depth later on this Repo"_
+
+> In 1st line , we have included a header file for functionalities to work properly . If we don't add header file in C/C++ , the whole code meant nothing .
+
+> In 2nd line , we have added a standard _[namespace](#namespace)_ which consist of all important and really usefull funtionalities.
+
+> In 4th line , we have created a main function having **int** as its's **return-type** .
+
+> In 5th line , there is a _[variable](#variable-and-data-types)_ declared of **int** _[data type](#variable-and-data-types)_.
+
+> In 7th line , we used the standard output of C++ . The Text Written in between the **Quotation marks " "** will be displayed upon the screen.
+
+> In 8th line , we used standard input of C++ . We can store data provided by _user_ in _[Variables](#variable-and-data-types)_ using this .
+
+> In 10th line , we have binded up everything and printed them.
+
+> In 12th line , we have return-type for the main funtion and the parenthesis for ending a function.
+
+<hr>
+
+#### **_Variable and Data Types_**
+
+**Variables are containers for storing data values.** Variables in C++ is a name given to a memory location. It is the basic unit of storage in a program.
+
+The value stored in a variable can be changed during program execution.
+A variable is only a name given to a memory location, all the operations done on the variable effects that memory location.
+In C++, all the variables must be declared before use.
+
+**_syntax :-_**
+
+        // Declaring a single variable
+        type variable_name;
+
+        // Declaring a variable with value
+        type var_name = value;
+
+        // Declaring multiple variables:
+        type var1_name, var2_name, var3_name;
+
+        // Declaring multiple variable with value
+        type var1 = value1,var2 = value2;
 
 1. **int** --> _Stores integers_ -- _2 or 4 bytes_
 2. **char** --> _Stores single characters_ -- _1 byte_
@@ -29,16 +85,17 @@
 5. **double** --> _Stores floating point numbers , 15 Decimal Places_ -- _8 bytes_
 6. **string** --> _Sentence or couple of words , stores text_ -- _Changes Accordingly_
 
-<br><br><hr><br><br>
+<hr>
 
-**_Constants_**
+#### **_Constants_**
 
 **_const keyword_** - Used to Convert Value of any Variable Read Only , It can't be modified once assigned.
 _If using const keyword , use all capitals for Naming of Constant Variable (It Increases in readability of Code)_
 
-<br><br><hr><br><br>
+<hr>
 
-**_Namespace_**
+#### **_Namespace_**
+
 Provides a Solution for Preventing name conflicts in large projects. Each Entity needs a unique name . A namespace allows for identically named entities as long as the namespaes are different.
 
 _We use "using namespace std;" to get rid of writing "std::" before each statement like "std::cout" , "std::string"_
@@ -54,9 +111,10 @@ _We can also create Custom namespace to use them in our program_
         std::string Jai = "Jai Mata Di";
     }
 
-<br><hr><br>
+<hr>
 
-**_typedef_** is used to define your own identifiers
+#### **_typedef_** is used to define your own identifiers
+
 that can be used in place of type specifiers such
 as int , float , and double , etc.
 
@@ -70,7 +128,7 @@ We must use "_\_t_" or "_\_type_" as suffix for the typedef variables.
 
      typedef std::string str_t;
 
-**_using keyword_** is also used for [aliasing](#aliasing-is-a-process-of-providing-other-name-to-a-object) of DataTypes.
+#### **_using keyword_** is also used for [aliasing](#aliasing-is-a-process-of-providing-other-name-to-a-object) of DataTypes.
 
 **_syntax :-_**
 
@@ -80,7 +138,7 @@ We must use "_\_t_" or "_\_type_" as suffix for the typedef variables.
 
      using str = std::string;
 
-<br><br><hr><br><br>
+<hr>
 
 ### **_Operators_** :- _Operators are used to perform operations on variables and values._
 
@@ -155,7 +213,14 @@ _These operations include testing, setting, or shifting the actual bits._
         <<	Bitwise Shift Left Operator
         >>	Bitwise Shift Right Operator
 
-<hr>
+<br><hr><br>
+
+**_Type Conversion_** :- Conversion of a value from one type to another .
+
+- _Implicit_ --> Automatic by Compiler
+- _Explicit_ --> Precode value with new data type (Done by Programmer)
+
+<br><hr><br>
 
 <br><br><hr><br><br>
 <br><br><br><br><br>
