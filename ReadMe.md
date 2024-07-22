@@ -159,6 +159,7 @@ _These operations include testing, setting, or shifting the actual bits._
 
 <br><br><hr><br><br>
 <br><br><br><br><br>
+<br><br><br><br><br>
 
 ## Extras :
 
