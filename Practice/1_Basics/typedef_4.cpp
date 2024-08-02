@@ -4,8 +4,7 @@ typedef std::string str_t;
 
 using INT = int;
 
-int main()
-{
+int main() {
     /*
     typedef is used  to define your own identifiers
     that can be used in place of type specifiers such

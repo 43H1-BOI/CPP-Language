@@ -1,6 +1,6 @@
 # Some Important Notes
 
-### Introduction
+## Introduction
 
 **C++** -->
 
@@ -77,6 +77,8 @@ In C++, all the variables must be declared before use.
 
         // Declaring multiple variable with value
         type var1 = value1,var2 = value2;
+
+**Data Types**
 
 1. **int** --> _Stores integers_ -- _2 or 4 bytes_
 2. **char** --> _Stores single characters_ -- _1 byte_
@@ -166,7 +168,7 @@ Operators in C++ are divided into following groups :
 ![Assignment operators](https://i.postimg.cc/C5QGHQ7Y/Screenshot-2024-07-21-220707.png)
 
 <!--
-**Operator     Example     Same As**
+**Operator        Example     Same As**
 1. **=            x = 5       x = 5**
 2. **+=           x += 5      x = x + 5**
 3. **-=           x -= 5      x = x - 5**
@@ -225,6 +227,30 @@ _These operations include testing, setting, or shifting the actual bits._
 <br><br><hr><br><br>
 <br><br><br><br><br>
 <br><br><br><br><br>
+
+### **_Conditional Statements_**
+
+There are three types of conditional statements exists in CPP Language.
+
+1. **If-Else statement**
+2. **Switch statement**
+
+#### 1. **If-Else Statement** :- _If - Else Statement is divided mainly into 4 parts._
+
+        if(condition){
+        // Statements to execute if
+        // condition is true
+        }
+
+### **_Loops_**
+
+### **_Arrays_**
+
+### **_String_**
+
+### **_Functions_**
+
+### **_OOPs_**
 
 ## Extras :
 

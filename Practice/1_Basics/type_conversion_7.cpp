@@ -1,7 +1,6 @@
 #include <iostream>
 
-int main()
-{
+int main() {
     /*
 
 Type Conversion :- Conversion of a value from one type to another .

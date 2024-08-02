@@ -21,8 +21,7 @@ namespace Hindi
 
 }
 
-int main()
-{
+int main() {
     // We can include specific namespace by defining them seperately
     using std::cout;
     using std::endl;

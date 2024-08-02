@@ -4,8 +4,7 @@ using namespace std;
 
 // Code for Hybrid Inheritance
 
-class Student
-{
+class Student {
 protected:
     char name[10];
     int roll_no;
@@ -16,8 +15,7 @@ public:
     void showData();
 };
 
-void Student ::getData()
-{
+void Student::getData() {
     cout << "Enter Data of Student : " << endl;
     cout << "Enter Full Name : ";
     cin >> name;
@@ -27,8 +25,7 @@ void Student ::getData()
     cin >> sem;
 }
 
-void Student ::showData()
-{
+void Student::showData() {
     cout << "Student's Data : " << endl;
     cout << "Name : ";
     puts(name);
@@ -36,19 +33,17 @@ void Student ::showData()
     cout << "Semester : " << sem << endl;
 }
 
-class Test : virtual public Student
-{
+class Test : virtual public Student {
 protected:
     int marks;
-    int english, maths, science;
+    int english , maths , science;
 
 public:
     void getTestMarks();
     void showTestMarks();
 };
 
-void Test ::getTestMarks()
-{
+void Test::getTestMarks() {
     cout << "Enter Test Marks : " << endl;
     cout << "Maths : ";
     cin >> maths;
@@ -58,8 +53,7 @@ void Test ::getTestMarks()
     cin >> english;
 }
 
-void Test ::showTestMarks()
-{
+void Test::showTestMarks() {
     cout << "Test Marks are : " << endl;
     cout << "Maths : " << maths << endl;
     cout << "Science : " << science << endl;
@@ -68,8 +62,7 @@ void Test ::showTestMarks()
     cout << "Total Marks : " << marks << endl;
 }
 
-class Sports : virtual public Student
-{
+class Sports : virtual public Student {
 protected:
     int grade;
 
@@ -78,34 +71,29 @@ public:
     void showGrade();
 };
 
-void Sports ::getGrade()
-{
+void Sports::getGrade() {
     cout << "Enter Sports Grade (in numbers) : " << endl;
     cin >> grade;
 }
 
-void Sports ::showGrade()
-{
+void Sports::showGrade() {
     cout << "Sports Grades are : " << grade << endl;
 }
 
-class Result : virtual public Test, virtual public Sports
-{
+class Result : virtual public Test , virtual public Sports {
 public:
     void makeResult();
     void showResult();
 };
 
-void Result ::makeResult()
-{
+void Result::makeResult() {
     getData();
     getTestMarks();
     getGrade();
     cout << "Result Created Successfully !! " << endl;
 }
 
-void Result ::showResult()
-{
+void Result::showResult() {
     cout << "Result : " << endl;
     showData();
     showTestMarks();
@@ -113,9 +101,8 @@ void Result ::showResult()
     cout << "Result Shown Successfully !! " << endl;
 }
 
-int main()
-{
-    Result Abhi, Tushar;
+int main() {
+    Result Abhi , Tushar;
     Abhi.makeResult();
     Abhi.showResult();
     return 0;

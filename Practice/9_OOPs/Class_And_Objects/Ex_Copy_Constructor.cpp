@@ -10,8 +10,7 @@ class student
     float marks;
 
 public:
-    student()
-    { //  Explicit Default constructor
+    student() { //  Explicit Default constructor
         cout << "Enter Roll No : ";
         cin >> rno;
         cout << "Enter Name : ";
@@ -20,24 +19,21 @@ public:
         cin >> marks;
     }
 
-    student(student &obj)
-    { //  Copy constructor
+    student(student& obj) { //  Copy constructor
         rno = obj.rno;
-        strcpy(name, obj.name);
+        strcpy(name , obj.name);
         marks = obj.marks;
         cout << "Copy Constructor Called !" << endl;
     }
 
-    void display()
-    {
+    void display() {
         cout << "Roll No. : " << rno << endl;
         cout << "Name : " << name << endl;
         cout << "Marks : " << marks << endl;
     }
 };
 
-int main()
-{
+int main() {
     student s;
     cout << "Students Data : " << endl;
     cout << endl;

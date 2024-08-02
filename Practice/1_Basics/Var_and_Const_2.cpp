@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
     // Variables and DataTypes
     // **int** --> *Stores integers* -- *2 or 4 bytes*
     int marks = 99;

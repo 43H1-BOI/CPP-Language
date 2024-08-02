@@ -5,8 +5,7 @@ using namespace std;
 class MCA
 {
 public:
-    void Show()
-    {
+    void Show() {
         cout << "Show () of MCA" << endl;
     }
     friend class MTech;
@@ -16,16 +15,14 @@ public:
 class MTech
 {
 public:
-    void Show()
-    {
+    void Show() {
         MCA x;
         x.Show();
         cout << "Show () of MTech" << endl;
     }
 };
 
-int main()
-{
+int main() {
     MTech Abhi;
     Abhi.Show();
     return 0;
