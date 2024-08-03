@@ -2,22 +2,22 @@
 using namespace std;
 
 // Function to Input Values inside an Array
-void getArr(int* arr , int size) {
-    for (int i = 0; i < size; i++) {
+void getArr(int* arr , int size){
+    for (int i = 0; i < size; i++){
         cout << "Enter Element " << (i + 1) << " : ";
         cin >> arr[i];
     }
 }
 
 // Function to Print Values of Array
-void printArr(int* arr , int size) {
-    for (int i = 0; i < size; i++) {
+void printArr(int* arr , int size){
+    for (int i = 0; i < size; i++){
         cout << arr[i] << " ";
         // cout << "Element " << (i + 1) << " : " << arr[i] << endl;
     }
 }
 
-int main() {
+int main( ){
     int s; // Size of Array
     cout << "Enter size of Array : ";
     cin >> s;

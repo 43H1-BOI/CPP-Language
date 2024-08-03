@@ -58,7 +58,7 @@
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "editor.copyWithSyntaxHighlighting": false,
   "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools-extension-pack"
+    "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   "C_Cpp.vcFormat.wrap.preserveBlocks": "allOneLineScopes",
   "C_Cpp.vcFormat.space.withinSquareBrackets": false,
