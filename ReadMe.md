@@ -244,11 +244,67 @@ There are three types of conditional statements exists in CPP Language.
 
 ### **_Loops_**
 
+### **_Functions_**
+
+Functions are block of code which can be reused many times.
+
+**_Declaration :-_**
+
+    <return_type> <Function_name>(parameters);
+
+**_Definition :-_**
+
+    <return-type> <Function-name>(parameters if any){
+        //block of code
+    }
+
+Function must be declared before main and can be defined after main or before main() fun , we can both declare and define function at the same time.
+
+**_Example :-_**
+
+    /* Function Example 1 :
+    Print Namaste for India and Bonjour for French*/
+    #include<iostream>
+    using namespace std;
+
+    void Greet(int n); // Function Declaration before main()
+
+    // Function Decration and Definition at same time
+    void GoodBye( ){
+        cout << "Good Bye ! " << endl>>;
+    }
+
+    int main( ){ // Calling Main Function
+        cout << "Enter 1 for Indian " << endl;
+        cout << "Enter 2 for French " << endl;
+
+        printf("Enter Your Choice : ");
+        cin >> n;
+
+        Greet(n); // Calling Greet() Function
+
+        GoodBye(); // Calling GoodBye() Function
+        return 0;
+    }
+
+    // this function has a parameter of int data-type
+    void Greet(int n){ // Function Definition
+        if (n == 1){
+            printf("Namaste India");
+        } else if (n == 2) {
+            printf("Bonjour");
+        } else{
+            printf("Invalid Input");
+        }
+    }
+
+<hr>
+
+<hr>
+
 ### **_Arrays_**
 
 ### **_String_**
-
-### **_Functions_**
 
 ### **_OOPs_**
 

@@ -1,0 +1,26 @@
+Vectors 
+    :- Dynamic Array 
+    	   Resizable
+    	   Also stored in Contigious memory
+	   
+    Include header file <vector>
+
+    Declaration -
+	    vector <datatype> vector_name;
+	    vector <datatype> vector_name(size);
+
+Vector Methods :-
+1. size() - To get Size of Vector
+2. resize(new_size) - To Resize Vector
+3. capacity() - It is the capacity of vector ( Doesn't Restrict to resize it for a bigger value but is defined for storage ) 
+    [ capacity => size ]
+    It is always increased in powers of 2. (Upper Closest Power to Size)
+    Capacity is compiler dependent and it is not necessary that it will be increased if we resize our vector to any other level
+4. pushback(element) - to add element at the end of the vector
+5. insert(position,element) - to insert element at given position and push other elements backward
+6. begin() - to get beginning position
+7. end() - to get end position of a vector
+8. popback() - to remove last element 
+9. erase(position) - to remove element from any position 
+    ( must be relative position e.g. v.begin() + 2 , v.end() - 3 , etc. ) 
+10. clear() - to clear all elements from vector
