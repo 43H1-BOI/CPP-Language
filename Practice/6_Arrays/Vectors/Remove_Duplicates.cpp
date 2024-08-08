@@ -25,7 +25,7 @@ int removeDuplicates(vector<int>& v){
 
 //Remove Duplicates from Sorted Array
 int main( ){
-    vector<int> v = { 0,0,1,1,1,2,2,3,3,4 }; // creating vector of int type and size = 5
+    vector<int> v = { 0,0,1,1,1,2,2,3,3,4 }; // creating vector of int type and size = 10
     int i , j;
 
     if (v.size( ) != 1){
