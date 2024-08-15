@@ -2,9 +2,10 @@
 using namespace std;
 
 /*
-In this Program I want to create a array of Items in Dukaan but i am just making an array of int type
-In next Version I'll make array of Dukaan which will contains name,itemId,Price
-This is being published to let me remind me myself in future that i also made this mistake
+In this Program I am creating an array of Items in Dukaan.
+I done this by dynamically allocation of array of type Dukaan(Class)
+
+Is there anything that i can do with the program to remove Items_No_Corrector( ) function
 */
 
 class Dukaan {
@@ -12,60 +13,58 @@ private:
     string Name;
     int ItemID;
     int Price;
-    int No_Of_Items;
-    int* Items;
-
+    static int Item_No;
 public:
-    Dukaan( ){ // Default Constructor
-        /*
-        This is only created because it is compulsory to create a default constructor if we are creating a parameterized constructor
-        */
-    }
-
-    Dukaan(int x){ // Parameterized Constructor
-        No_Of_Items = x;
-        Items = new int[No_Of_Items];
-        // Dynamic Memory Allocation using new Keyword
-    }
-
-    ~Dukaan( ){ // Destructor For Deletion of Dynamically Allocated Memory
-        delete[ ]Items; // Deleting Dynamically Created Array
-        Items = NULL; // Setting Null to a Dangling Pointer
-        cout << "Destructor Called !" << endl;
-    }
 
     void Ini_Items( );
     void Show_Items( );
+    void Items_No_Corrector( ){ // Used to Convert Item No to 1 again
+    // Want this because i want to recount each item after the Initialize Function Ends.
+        Dukaan::Item_No = 1;
+    }
 };
 
+// Set Item No to 1 for whole program then it gets increment inside Ini_Items() and Show_Items() Functions
+int Dukaan::Item_No = 1;
+
 void Dukaan::Ini_Items( ){ // For Initializing Items
-    for (int i = 0; i < No_Of_Items; i++){
-        cout << i + 1 << ". Enter Item ID : ";
-        cin >> ItemID;
-        cout << "Enter Name of Item " << ItemID << " : ";
-        getline(cin >> ws , Name);
-        cout << "Enter Price of " << Name << " : ";
-        cin >> Price;
-        cout << endl;
-    }
+    cout << Item_No << ". Enter Name of Item " << " : ";
+    getline(cin >> ws , Name);
+    cout << "Enter Item ID for " << Name << " : ";
+    cin >> ItemID;
+    cout << "Enter Price of " << Name << " : ";
+    cin >> Price;
+    cout << endl;
+    Item_No++;
 }
 
-void Dukaan::Show_Items( ){
-    for (int i = 0; i < No_Of_Items; i++){
-        cout << i + 1 << ". Item ID : " << ItemID << "  ";
-        cout << "Price of " << Name << " : " << Price << endl;
-    }
-
+void Dukaan::Show_Items( ){ // For Displaying Items
+    cout << Item_No << ". Item ID : " << ItemID << " | ";
+    cout << "Price of " << Name << " : " << Price << endl;
+    Item_No++;
 }
 
 int main( ){
     int items;
     cout << "Enter No Of Items in Your Shop :";
     cin >> items;
-    Dukaan RamJi(items); // RamJi Bhai ki Shop Having _ No. of Items
+    // Dukaan RamJi[items]; // RamJi Bhai ki Shop Having _ No. of Items
 
-    RamJi.Ini_Items( );
-    RamJi.Show_Items( );
+    // Dynamically Allocting Memory for Array of Dukaan Class's Object
+    Dukaan* RamJi = new Dukaan[items];
 
+    RamJi->Items_No_Corrector( );
+    for (int i = 0; i < items; i++){
+        RamJi[i].Ini_Items( );
+    }
+
+    RamJi->Items_No_Corrector( );
+    for (int i = 0; i < items; i++){
+        RamJi[i].Show_Items( );
+    }
+
+    // Deallocating Memory from Heap 
+    delete[ ]RamJi;
+    RamJi = NULL;
     return 0;
 }
