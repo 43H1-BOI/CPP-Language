@@ -244,9 +244,6 @@ There are three types of conditional statements exists in CPP Language.
 
 ### **_Loops_**
 
-
-
-
 ### **_Functions_**
 
 Functions are block of code which can be reused many times.
@@ -324,3 +321,5 @@ Function must be declared before main and can be defined after main or before ma
 <br><hr><br>
 
 #### **_Aliasing_** _is a process of providing other Name to a Object._
+
+#### **_Dangling Pointer_** _: A pointer pointing out to a location where nothing is present ._
