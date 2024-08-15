@@ -12,9 +12,11 @@ int main( ){
         cin >> arr[i];
     }
 
-
+    // Example Array
+/*
+int arr[] = {6,8,9,3,1,2,7,0};
+*/
     // 6 8 9 3 1 2 7 0
-    // 
 
 
     // Bubble Sort
