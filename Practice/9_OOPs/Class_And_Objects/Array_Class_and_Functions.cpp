@@ -18,20 +18,20 @@ public:
 
     void Ini_Arr( );
     void Show_Arr( );
-    void Max_Arr( );
-    void Min_Arr( );
-    void Sum_Arr( );
-    void Avg_Arr( );
-    void Search_Arr(int);
+    int Max_Arr( );
+    int Min_Arr( );
+    double Sum_Arr( );
+    float Avg_Arr( );
+    bool Search_Arr(int);
 
 };
 
 void Array::Ini_Arr( ){
-    cout << "\nEnter Elements in Array ::" << endl;
+    // cout << "\nEnter Elements in Array ::" << endl;
     for (int i = 0; i < Size; i++){
         cin >> Arr[i];
     }
-    cout << "Elements Entered Successfully !!" << endl;
+    // cout << "Elements Entered Successfully !!" << endl;
 }
 
 void Array::Show_Arr( ){
@@ -39,58 +39,53 @@ void Array::Show_Arr( ){
     for (int i = 0; i < Size; i++){
         cout << Arr[i] << "  ";
     }
-    cout << "\nElements Shown Successful !!" << endl;
+    // cout << "\nElements Shown Successful !!" << endl;
 }
 
-void Array::Max_Arr( ){
-    cout << "\nMaximum Element in Array = ";
+int Array::Max_Arr( ){
     int max = Arr[0];
     for (int i = 1; i < Size; i++){
         if (Arr[i] > max){
             max = Arr[i];
         }
     }
-    cout << max << endl;
+    return max;
 }
 
-void Array::Min_Arr( ){
-    cout << "\nMinimum Element in Array = ";
+int Array::Min_Arr( ){
     int mini = Arr[0];
     for (int i = 1; i < Size; i++){
         if (Arr[i] < mini){
             mini = Arr[i];
         }
     }
-    cout << mini << endl;
+    return mini;
 }
 
-void Array::Sum_Arr( ){
-    cout << "\nSum of Elements in Array = ";
+double Array::Sum_Arr( ){
     int sum = Arr[0];
     for (int i = 1; i < Size; i++){
         sum += Arr[i];
     }
-    cout << sum << endl;
+    return sum;
 }
 
-void Array::Avg_Arr( ){
-    cout << "\nAverage of Elements in Array = ";
+float Array::Avg_Arr( ){
     int sum = Arr[0];
     for (int i = 1; i < Size; i++){
         sum += Arr[i];
     }
     float avg = sum / Size;
-    cout << avg << endl;
+    return avg;
 }
 
-void Array::Search_Arr(int x){
+bool Array::Search_Arr(int x){
     for (int i = 0; i < Size; i++){
         if (x == Arr[i]){
-            cout << "\nElement is Present in Array " << endl;
-            return;
+            return true;
         }
     }
-    cout << "Element not Found !" << endl;
+    return false;
 }
 
 int main( ){
@@ -101,13 +96,18 @@ int main( ){
     Array Abhi(K);
     Abhi.Ini_Arr( );
     Abhi.Show_Arr( );
-    Abhi.Max_Arr( );
-    Abhi.Min_Arr( );
-    Abhi.Sum_Arr( );
-    Abhi.Avg_Arr( );
+    cout << Abhi.Max_Arr( ) << endl;
+    cout << Abhi.Min_Arr( ) << endl;
+    cout << Abhi.Sum_Arr( ) << endl;
+    cout << Abhi.Avg_Arr( ) << endl;
     int x;
     cout << "\nEnter Element to Find in Array : ";
     cin >> x;
-    Abhi.Search_Arr(x);
+    if (Abhi.Search_Arr(x)){
+        cout << "Element Present in Array ." << endl;
+    }
+    else{
+        cout << "Element Not Present in Array ." << endl;
+    }
     return 0;
 }
