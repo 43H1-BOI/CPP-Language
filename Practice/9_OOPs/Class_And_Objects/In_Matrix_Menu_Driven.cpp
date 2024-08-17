@@ -7,6 +7,11 @@
     C --> Add two Matrix --> Done
     D --> Multiply two Matrix --> Done
     E --> Transpose of Matrix --> Done
+
+    In this Version i am making this program cleaner by adding
+    -- Operator Overloading
+    -- Return Type in Functions
+    -- Generalizing Code
 */
 
 #include <iostream>
@@ -18,13 +23,15 @@ class Matrix
   static int count;
 
 public:
-  Matrix( );
-  void Display( );
+  // Matrix( );
+  friend void operator<<(ostream& out , Matrix& M);
+  friend void operator>>(istream& in , Matrix& M);
+
   void Transpose( );
   friend void Add(Matrix m1 , Matrix m2);
   friend void Multiply(Matrix m1 , Matrix m2);
 };
-
+/*
 Matrix::Matrix( ){
   count++;
   cout << "Input Elements of Matrix " << count << ":" << endl;
@@ -36,7 +43,25 @@ Matrix::Matrix( ){
     }
   }
 }
+*/
 
+void operator<<(ostream& out , Matrix& M){
+  for (int i = 0; i < 3; i++){
+    for (int j = 0; j < 3; j++){
+      out << M.mat[i][j];
+    }
+  }
+}
+
+Matrix operator>>(istream& in , Matrix& M){
+  for (int i = 0; i < 3; i++){
+    for (int j = 0; j < 3; j++){
+      in >> M.mat[i][j];
+    }
+  }
+}
+
+/*
 void Matrix::Display( ){
   cout << "Elements in Matrix Are : " << endl;
 
@@ -47,6 +72,7 @@ void Matrix::Display( ){
     cout << endl;
   }
 }
+*/
 
 void Add(Matrix m1 , Matrix m2){
   int sum[3][3];
@@ -97,6 +123,10 @@ int main( ){
   int choice;
   cout << "Program to Perform Calculations on Matrix :: " << endl;
   Matrix M1 , M2;
+  cout << "Enter Elements in 1st Matrix : " << endl;
+  cin >> M1;
+  cout << "Enter Elements in 1st Matrix : " << endl;
+  cin >> M2;
 
   do{
     cout << endl;

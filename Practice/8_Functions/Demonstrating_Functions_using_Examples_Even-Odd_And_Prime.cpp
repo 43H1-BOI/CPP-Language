@@ -1,4 +1,3 @@
-// #include <stdio.h>
 #include <iostream>
 using namespace std;
 
@@ -6,7 +5,7 @@ void checkEvenOdd(int); // Function Declaration before main() function
 
 /*
 We can also decalare and define function at the same time but must
-remember that it must be done before msin function
+remember that it must be done before main function
 */
 
 bool checkPrime(int num){

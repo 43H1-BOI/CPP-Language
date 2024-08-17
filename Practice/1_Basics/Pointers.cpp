@@ -35,8 +35,8 @@ int main() // Studied
 }
 */
 
-// This is Written in C Language
 /*
+// This is Written in C Language
 int main() // Self
 {
     int B = 63;
@@ -66,10 +66,10 @@ int main() // Self
 */
 
 // This is Written in C++ Language
-int main() // Self
+int main( ) // Self
 {
     int B = 63;
-    int *ptrB = &B;
+    int* ptrB = &B;
 
     // Value of B without using Pointer
     cout << "Value of B is " << B << endl;

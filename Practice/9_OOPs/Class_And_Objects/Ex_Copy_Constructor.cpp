@@ -1,46 +1,50 @@
-// Example for Explicit Default Cons.
-#include <iostream>
-#include <string.h>
+// Copy Constructor Example
+#include<iostream>
+#include<string.h>
 using namespace std;
 
-class student
-{
+class student{
     int rno;
     char name[50];
     float marks;
 
 public:
-    student() { //  Explicit Default constructor
-        cout << "Enter Roll No : ";
+
+    student( ){   //  Explicit Default constructor
+        cout << "Enter Roll No:";
         cin >> rno;
-        cout << "Enter Name : ";
+        cout << "Enter Name:";
         cin >> name;
-        cout << "Enter Marks : ";
+        cout << "Enter Marks:";
         cin >> marks;
     }
 
-    student(student& obj) { //  Copy constructor
+    student(student& obj){   //  Copy constructor
         rno = obj.rno;
         strcpy(name , obj.name);
         marks = obj.marks;
         cout << "Copy Constructor Called !" << endl;
     }
 
-    void display() {
+    void display( ){
+        cout << "Students Data : \n" << endl;
+
         cout << "Roll No. : " << rno << endl;
         cout << "Name : " << name << endl;
         cout << "Marks : " << marks << endl;
     }
 };
 
-int main() {
+
+int main( ){
     student s;
-    cout << "Students Data : " << endl;
-    cout << endl;
-    s.display();
+    s.display( );
+
+    // Types of Calling Copy Constructors
     student s1(s);
     student s2 = s;
-    s1.display();
-    s2.display();
+
+    s1.display( );
+    s2.display( );
     return 0;
 }

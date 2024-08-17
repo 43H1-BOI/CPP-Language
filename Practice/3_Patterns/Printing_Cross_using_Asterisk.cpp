@@ -1,25 +1,28 @@
-#include<stdio.h>
+#include<iostream>
+using namespace std;
 
-int main()
-{
+int main( ){
     int a;
     char C;
-    printf("Program for Printing Cross using Asterisk ::\n");
+    cout << "Program for Printing Cross using Asterisk ::\n";
 
-    printf("\nEnter Number of Lines :- ");
-    scanf("%d",&a);
-    if (  a % 2 != 0 ) 
-    {
-        for ( int i = 1 ; i <= a ; i++ )
-        {
-            for ( int j = 1 ; j <= a ; j++ )
-            {
-                if ( j == i || i + j == a + 1 ) printf(" * ");
-                else printf("   ");
+    cout << "\nEnter Number of Lines :- ";
+    cin >> a;
+    if (a % 2 != 0){
+        for (int i = 1; i <= a; i++){
+            for (int j = 1; j <= a; j++){
+                if (j == i || i + j == a + 1){
+                    printf(" * ");
+                }
+                else{
+                    cout << "   ";
+                }
             }
-            printf("\n");
+            cout << endl;;
         }
     }
-    else printf("\nPattern Not Possible");
+    else{
+        cout << "\nPattern Not Possible" << endl;
+    }
     return 0;
 }
