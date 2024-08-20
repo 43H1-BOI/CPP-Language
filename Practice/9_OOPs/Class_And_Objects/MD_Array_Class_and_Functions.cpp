@@ -28,7 +28,7 @@ public:
 
 };
 
-void Array::Ini_Arr( ){ // To Get Elements of Array 
+void Array::Ini_Arr( ){ // To Initialize an Array 
     // cout << "\nEnter Elements in Array ::" << endl;
     for (int i = 0; i < Size; i++){
         cin >> Arr[i];

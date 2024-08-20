@@ -4,7 +4,7 @@ using namespace std;
 // Function to Input Values inside an Array
 void getArr(int* arr , int size){
     for (int i = 0; i < size; i++){
-        cout << "Enter Element " << (i + 1) << " : ";
+        // cout << "Enter Element " << (i + 1) << " : ";
         cin >> arr[i];
     }
 }
@@ -15,6 +15,15 @@ void printArr(int* arr , int size){
         cout << arr[i] << " ";
         // cout << "Element " << (i + 1) << " : " << arr[i] << endl;
     }
+    cout << endl;
+}
+
+// Function to Delete any element from Array
+void deleteEle(int* arr , int& size , int index){
+    for (int i = index; i < size - 1; i++){
+        arr[i] = arr[i + 1];
+    }
+    size--;
 }
 
 int main( ){
@@ -32,7 +41,16 @@ int main( ){
     */
 
     // Functions to Set and Get Values of Array
+    cout << "Enter Elements in Array : ";
     getArr(arr , s);
+    printArr(arr , s);
+
+
+    // Delete Element from Array 
+    // deleteEle(array , size , index );
+    deleteEle(arr , s , 1);
+
+    cout << "After Deleting Element from Array : ";
     printArr(arr , s);
 
     // To Free up Dynamically allocated memory from Heap
