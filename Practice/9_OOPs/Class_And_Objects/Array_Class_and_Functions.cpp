@@ -25,7 +25,6 @@ public:
     int Search_Arr(int element);
     void Delete_Ele(int index);
     void Insert_Ele(int index , int element);
-
 };
 
 void Array::Ini_Arr( ){ // To Get Elements of Array 
