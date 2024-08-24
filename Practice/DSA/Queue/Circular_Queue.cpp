@@ -1,87 +1,82 @@
 #include<iostream>
 using namespace std;
 
-class Queue{
+class CircularQueue{
 private:
     int* arr;
     int front , rare , size;
 
 public:
-    Queue( ){ } // Default Cons.
+    CircularQueue( ){ }
 
-    Queue(int size){ // Parameterized Cons.
-        arr = new int[size];
+    CircularQueue(int size){
         this->size = size;
-        front = -1;
-        rare = -1;
+        arr = new int[size];
+        front = rare = -1;
     }
 
-    ~Queue( ){
+    ~CircularQueue( ){
         delete[ ] arr;
         arr = NULL;
     }
 
-    void enqueue(int value); // To add value from rare side
-    void dequeue( ); // To remove value from front
-    bool isFull( ); // To check if Queue is Full
-    bool isEmpty( ); // To check if Queue is Empty
-    void display( ); // To Display elements of Queue
-};
-
-void Queue::enqueue(int value){
-    if (isEmpty( )){
-        front++;
-        rare++;
-        arr[front] = value;
-    }
-    else if (isFull( )){
-        cout << "\nQueue is Full !" << endl;
-    }
-    else{
-        rare++;
+    void enqueue(int value){
+        if (isFull( )){
+            cout << "\nCircular Queue is Full !" << endl;
+            return;
+        }
+        else if (front == -1 && rare == -1){
+            front = rare = 0;
+        }
+        else{
+            rare++;
+        }
         arr[rare] = value;
     }
-}
 
-void Queue::dequeue( ){
-    if (isEmpty( )){
-        cout << "\nQueue is Already Empty ! " << endl;
-        return;
-    }
-    else if (front == rare){
-        front--;
-        rare--;
-    }
-    else{
-        front++;
-        size++;
-    }
-}
-
-bool Queue::isFull( ){
-    if (rare == size - 1)
-        return true;
-    else
-        return false;
-}
-
-bool Queue::isEmpty( ){
-    if (front == -1 && rare == -1)
-        return true;
-    else
-        return false;
-}
-
-void Queue::display( ){
-    if (isEmpty( )){
-        cout << "Queue is Empty." << endl;
-    }
-    else{
-        for (int i = front; i <= rare; i++){
-            cout << arr[i] << "  ";
+    void dequeue( ){
+        if (isEmpty( )){
+            cout << "\nNo Element in Circular Queue ." << endl;
+            return;
+        }
+        else if (front == rare){
+            front = rare = -1;
+        }
+        else{
+            front = (front + 1) % size;
         }
     }
-}
+
+    bool isFull( ){
+        if (front == (rare + 1) % size){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    bool isEmpty( ){
+        if (rare == -1 && front == -1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    void display( ){
+        if (isEmpty( )){
+            cout << "Circular Queue is Empty." << endl;
+        }
+        else{
+            for (int i = front; i <= rare; i++){
+                cout << arr[i] << "  ";
+            }
+        }
+    }
+};
+
 
 void ShowMenu( ){
     cout << endl;
@@ -95,6 +90,7 @@ void ShowMenu( ){
     cout << "6. Exit Program " << endl;
 }
 
+
 int main( ){
 
     int choice = 0;
@@ -104,7 +100,7 @@ int main( ){
     cout << "Enter Size of Queue : ";
     cin >> size;
 
-    Queue Q(size);
+    CircularQueue Q(size);
 
     ShowMenu( );
 
