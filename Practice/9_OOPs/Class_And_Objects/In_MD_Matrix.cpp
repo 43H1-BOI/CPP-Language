@@ -19,14 +19,29 @@ using namespace std;
 
 class Matrix
 {
-  int mat[3][3];
+  int** mat;
+  int rows , columns;
   static int count;
 
 public:
-  // Matrix( );
+  Matrix( ); // Default Constructor
+  Matrix(int , int); // Parameterized Constructor
+
+  // Operator Overloading << , >> , + , * , ! (Transpose)
   friend ostream& operator<<(ostream& out , const Matrix& M);
   friend istream& operator>>(istream& in , Matrix& M);
+  Matrix operator+(Matrix M);
+  Matrix operator*(Matrix M);
+  Matrix operator!( );
 
+  inline int Rows( ){ // Returns rows
+    return rows;
+  }
+  inline int Columns( ){ // Returns rows
+    return columns;
+  }
+
+  // Other Functions
   void Transpose( );
   friend void Add(Matrix m1 , Matrix m2);
   friend void Multiply(Matrix m1 , Matrix m2);
@@ -45,10 +60,45 @@ Matrix::Matrix( ){
 }
 */
 
+// Default Constructor
+/*
+Matrix::Matrix( ){
+mat = new int* [rows];
+  for (int i = 0; i < rows; i++){
+    mat[i] = new int[columns];
+  }
+
+  for (int i = 0; i < rows; i++){
+    for (int j = 0; j < columns; j++){
+      // cin >> mat[i][j];
+      mat[i][j] = 0;
+    }
+  }
+}
+*/
+
+// Parameterized Constructor
+Matrix::Matrix(int r , int c){
+  rows = r;
+  columns = c;
+
+  mat = new int* [rows];
+  for (int i = 0; i < rows; i++){
+    mat[i] = new int[columns];
+  }
+
+  for (int i = 0; i < rows; i++){
+    for (int j = 0; j < columns; j++){
+      // cin >> mat[i][j];
+      mat[i][j] = 0;
+    }
+  }
+}
+
 // Insertion Operator Overloaded
 istream& operator>>(istream& in , Matrix& M){
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
+  for (int i = 0; i < M.rows; i++){
+    for (int j = 0; j < M.columns; j++){
       in >> M.mat[i][j];
     }
   }
@@ -89,6 +139,57 @@ void Matrix::Display( ){
 }
 */
 
+// Overloading + Operator
+Matrix Matrix::operator+(Matrix M){
+// int sum[rows][columns] = { 0 };
+  Matrix sum(rows , columns);
+  for (int i = 0; i < rows; i++){
+    for (int j = 0; j < columns; j++){
+      sum.rows = rows + M.rows;
+      sum.columns = columns + M.columns;
+    }
+  }
+  return sum;
+}
+
+// Overloading * Operator
+Matrix Matrix::operator*(Matrix M){
+  Matrix mult(rows , M.columns);
+
+  for (int i = 0; i < rows; ++i){
+    for (int j = 0; j < M.columns; ++j){
+      for (int k = 0; k < columns; ++k){
+        mult.mat[i][j] += mat[i][k] * M.mat[k][j];
+      }
+    }
+  }
+  return mult;
+
+  // for (int i = 0; i < rows; i++){
+  //   for (int j = 0; j < M.columns; j++){
+  //     cout << mult.mat[i][j] << "  ";
+  //   }
+  //   cout << endl;
+  // }
+
+}
+
+// Overloading ! (Transpose) Unary Operator
+Matrix Matrix::operator!( ){
+  Matrix transpose(columns , rows);
+
+  for (int i = 0; i < columns; i++){
+    for (int j = 0; j < rows; j++){
+      transpose.mat[i][j] = mat[j][i];
+      // cout << transpose.mat[i][j] << "  ";
+    }
+    // cout << endl;
+  }
+  return transpose;
+}
+
+
+// Other Functions
 void Add(Matrix m1 , Matrix m2){
   int sum[3][3];
   cout << endl;
@@ -135,21 +236,28 @@ void Matrix::Transpose( ){
 int Matrix::count = 0;
 
 int main( ){
-  Matrix M1;
-  cin >> M1;
-  cout << M1 << endl;
-  return 0;
-}
-
-/*
-
-int main( ){
   int choice;
+  int rows , columns;
   cout << "Program to Perform Calculations on Matrix :: " << endl;
-  Matrix M1 , M2;
+  cout << "Enter Details of 1st Matrix : " << endl;
+  cout << "Enter Number of Rows : ";
+  cin >> rows;
+  cout << "Enter Number of Columns : ";
+  cin >> columns;
+  Matrix M1(rows , columns);
   cout << "Enter Elements in 1st Matrix : " << endl;
   cin >> M1;
-  cout << "Enter Elements in 1st Matrix : " << endl;
+
+  cout << endl;
+
+  cout << "Enter Details of 2nd Matrix : " << endl;
+  cout << "Enter Number of Rows : ";
+  cin >> rows;
+  cout << "Enter Number of Columns : ";
+  cin >> columns;
+
+  Matrix M2(rows , columns);
+  cout << "Enter Elements in 2nd Matrix : " << endl;
   cin >> M2;
 
   do{
@@ -182,13 +290,13 @@ int main( ){
             case 1:
             cout << endl;
             cout << "Displaying 1st Matrix : " << endl;
-            M1.Display( );
+            cout << M1 << endl;
             break;
 
             case 2:
             cout << endl;
             cout << "Displaying 2nd Matrix : " << endl;
-            M2.Display( );
+            cout << M2 << endl;
             break;
 
             case 3:
@@ -205,12 +313,24 @@ int main( ){
 
       case 2:
       cout << endl;
-      Add(M1 , M2);
+      if (M1.Rows( ) == M2.Rows( ) && M1.Columns( ) == M2.Columns( )){ // Neccessary Condition for Matrix Addition
+        cout << (M1 + M2) << endl;
+        // Add(M1 , M2);
+      }
+      else{
+        cout << "Addition Not Possibble !" << endl;
+      }
       break;
 
       case 3:
       cout << endl;
-      Multiply(M1 , M2);
+      if (M1.Columns( ) == M2.Rows( )){ // Neccessary Condition for Matrix Multiplication
+        cout << (M1 * M2) << endl;
+        // Multiply(M1 , M2);
+      }
+      else{
+        cout << "Matrix Multiplication Not Possible ! " << endl;
+      }
       break;
 
       case 4: // For Transpose of Matrix
@@ -228,11 +348,13 @@ int main( ){
 
           switch (choice2){
             case 1:
-            M1.Transpose( );
+            cout << (!M1) << endl;
+            // M1.Transpose( );
             break;
 
             case 2:
-            M2.Transpose( );
+            cout << (!M2) << endl;
+            // M2.Transpose( );
             break;
 
             case 3:
@@ -258,4 +380,3 @@ int main( ){
   } while (choice != 5);
   return 0;
 }
-*/
