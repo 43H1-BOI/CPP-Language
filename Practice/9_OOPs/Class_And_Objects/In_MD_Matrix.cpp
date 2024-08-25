@@ -30,8 +30,8 @@ public:
   // Operator Overloading << , >> , + , * , ! (Transpose)
   friend ostream& operator<<(ostream& out , const Matrix& M);
   friend istream& operator>>(istream& in , Matrix& M);
-  Matrix operator+(Matrix M);
-  Matrix operator*(Matrix M);
+  Matrix operator+(Matrix& M);
+  Matrix operator*(Matrix& M);
   Matrix operator!( );
 
   inline int Rows( ){ // Returns rows
@@ -46,19 +46,6 @@ public:
   friend void Add(Matrix m1 , Matrix m2);
   friend void Multiply(Matrix m1 , Matrix m2);
 };
-/*
-Matrix::Matrix( ){
-  count++;
-  cout << "Input Elements of Matrix " << count << ":" << endl;
-
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
-      cout << "Enter Element(" << i + 1 << "," << j + 1 << "):";
-      cin >> mat[i][j];
-    }
-  }
-}
-*/
 
 // Default Constructor
 /*
@@ -107,8 +94,8 @@ istream& operator>>(istream& in , Matrix& M){
 
 // Extraction Operator Overloaded
 ostream& operator<<(ostream& out , const Matrix& M){
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
+  for (int i = 0; i < M.rows; i++){
+    for (int j = 0; j < M.columns; j++){
       out << M.mat[i][j] << "  ";
     }
     out << "\n";
@@ -116,44 +103,20 @@ ostream& operator<<(ostream& out , const Matrix& M){
   return out;
 }
 
-/*
-Matrix operator>>(istream& in , Matrix& M){
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
-      in >> M.mat[i][j];
-    }
-  }
-}
-*/
-
-/*
-void Matrix::Display( ){
-  cout << "Elements in Matrix Are : " << endl;
-
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
-      cout << mat[i][j] << "  ";
-    }
-    cout << endl;
-  }
-}
-*/
-
 // Overloading + Operator
-Matrix Matrix::operator+(Matrix M){
+Matrix Matrix::operator+(Matrix& M){
 // int sum[rows][columns] = { 0 };
   Matrix sum(rows , columns);
   for (int i = 0; i < rows; i++){
     for (int j = 0; j < columns; j++){
-      sum.rows = rows + M.rows;
-      sum.columns = columns + M.columns;
+      sum.mat[i][j] = mat[i][j] + M.mat[i][j];
     }
   }
   return sum;
 }
 
 // Overloading * Operator
-Matrix Matrix::operator*(Matrix M){
+Matrix Matrix::operator*(Matrix& M){
   Matrix mult(rows , M.columns);
 
   for (int i = 0; i < rows; ++i){
@@ -190,48 +153,8 @@ Matrix Matrix::operator!( ){
 
 
 // Other Functions
-void Add(Matrix m1 , Matrix m2){
-  int sum[3][3];
-  cout << endl;
-  cout << "Addition of Matrix :" << endl;
-
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
-      sum[i][j] = m1.mat[i][j] + m2.mat[i][j];
-      cout << sum[i][j] << "  ";
-    }
-    cout << endl;
-  }
-}
-
-void Multiply(Matrix m1 , Matrix m2){
-  int mult[3][3] = { 0 };
-  cout << endl;
-  cout << "Multiplication of Matrix :" << endl;
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
-      for (int k = 0; k < 3; k++){
-        mult[i][j] += m1.mat[i][k] * m2.mat[k][j];
-      }
-      cout << mult[i][j] << "  ";
-    }
-    cout << endl;
-  }
-}
-
-void Matrix::Transpose( ){
-  int trans[3][3];
-  cout << endl;
-  cout << "Transpose of Matrix :" << endl;
-
-  for (int i = 0; i < 3; i++){
-    for (int j = 0; j < 3; j++){
-      trans[i][j] = mat[j][i];
-      cout << trans[i][j] << "  ";
-    }
-    cout << endl;
-  }
-}
+void Add(Matrix m1 , Matrix m2);
+void Multiply(Matrix m1 , Matrix m2);
 
 int Matrix::count = 0;
 
@@ -379,4 +302,48 @@ int main( ){
     }
   } while (choice != 5);
   return 0;
+}
+
+
+void Add(Matrix m1 , Matrix m2){
+  int sum[3][3];
+  cout << endl;
+  cout << "Addition of Matrix :" << endl;
+
+  for (int i = 0; i < 3; i++){
+    for (int j = 0; j < 3; j++){
+      sum[i][j] = m1.mat[i][j] + m2.mat[i][j];
+      cout << sum[i][j] << "  ";
+    }
+    cout << endl;
+  }
+}
+
+void Multiply(Matrix m1 , Matrix m2){
+  int mult[3][3] = { 0 };
+  cout << endl;
+  cout << "Multiplication of Matrix :" << endl;
+  for (int i = 0; i < 3; i++){
+    for (int j = 0; j < 3; j++){
+      for (int k = 0; k < 3; k++){
+        mult[i][j] += m1.mat[i][k] * m2.mat[k][j];
+      }
+      cout << mult[i][j] << "  ";
+    }
+    cout << endl;
+  }
+}
+
+void Matrix::Transpose( ){
+  int trans[3][3];
+  cout << endl;
+  cout << "Transpose of Matrix :" << endl;
+
+  for (int i = 0; i < 3; i++){
+    for (int j = 0; j < 3; j++){
+      trans[i][j] = mat[j][i];
+      cout << trans[i][j] << "  ";
+    }
+    cout << endl;
+  }
 }
