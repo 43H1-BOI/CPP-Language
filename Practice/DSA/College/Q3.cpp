@@ -49,7 +49,7 @@ void Stack::pop( ){
 }
 
 void Stack::display( ){
-    if (top == size - 1){
+    if (top == -1){
         cout << "Stack Underflow !" << endl;
         cout << "No Element Present in Stack" << endl;
     }
