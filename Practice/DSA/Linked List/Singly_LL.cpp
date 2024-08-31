@@ -1,9 +1,9 @@
 #include<iostream>
 using namespace std;
 
-// Singly Linked List with 4 Major Function
+// Singly Linked List
 
-class Node{
+class Node{ // Node for Linked List
 public:
     int data; // data inside Node
     Node* next; // pointer of Node type which points to the next Node
@@ -34,7 +34,9 @@ void insertAtPos(Node* head , int value , int pos){ // To Insert Element at any 
 
     if (pos == 0){
         insertAtHead(head , value);
+        return;
     }
+
     Node* new_node = new Node(value);
 
     Node* temp = head;
@@ -61,6 +63,49 @@ void display(Node* head){
     cout << "NULL" << endl;
 }
 
+void updateAtPos(Node*& head , int val , int pos){
+    Node* temp = head;
+
+    for (int curr = 0; curr <= pos; curr++){
+        temp = temp->next;
+    }
+    temp->data = val;
+}
+
+void deleteAtHead(Node*& head){
+    Node* temp = head;
+    head = head->next;
+    free(temp);
+}
+
+void deleteAtTail(Node*& head){
+    Node* second_last = head;
+    while (second_last->next->next != NULL){
+        second_last = second_last->next;
+    }
+    Node* temp = second_last->next;
+    second_last->next = NULL;
+    free(temp);
+}
+
+void deleteAtPos(Node*& head , int pos){
+    if (pos == 0){
+        deleteAtHead(head);
+        return;
+    }
+
+    Node* prev = head;
+
+    for (int curr = 0; curr < pos; curr++){
+        prev = prev->next;
+    }
+
+    Node* temp = prev->next;
+    prev->next = prev->next->next; //Pointing to the Next Node of temp (Node to be removed)
+    free(temp);
+}
+
+
     // 5 -> 4 -> 3 -> 2 -> 1 -> NULL
 int main( ){
     Node* head = NULL;
@@ -85,6 +130,18 @@ int main( ){
     cout << endl;
 
     insertAtPos(head , 4 , 3);
+    display(head);
+    cout << endl;
+
+    updateAtPos(head , 7 , 3);
+    display(head);
+    cout << endl;
+
+    deleteAtHead(head);
+    display(head);
+    cout << endl;
+
+    deleteAtTail(head);
     display(head);
     cout << endl;
 

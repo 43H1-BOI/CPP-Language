@@ -1,47 +1,72 @@
-// Infix Postfix
-
-#include<iostream>
-#include<stack>
-#include<cmath>
-
+#include <iostream>
+#include <stack>
+#include <string>
 using namespace std;
 
-int postfix(string s){
-    stack<int> st;
+int precedence(char op){
+    if (op == '^')
+        return 3;
+    else if (op == '*' || op == '/')
+        return 2;
+    else if (op == '+' || op == '-')
+        return 1;
+    else
+        return 0;
+}
 
-    for (int i = 0; i < s.length( ); i++){
-        if (s[i] >= '0' && s[i] <= '9'){
-            st.push(s[i] - '0');
-        }
-        else{
-            int op2 = st.top( );
-            st.pop( );
-            int op1 = st.top( );
-            st.pop( );
+string infixToPostfix(string infix){
+    stack<char> s;
+    string postfix;
+    for (int i = 0; i < infix.length( ); i++){
+        char c = infix[i];
 
-            switch (s[i]){
-                case '+':
-                st.push(op1 + op2);
-                break;
-                case '-':
-                st.push(op1 - op2);
-                break;
-                case '*':
-                st.push(op1 * op2);
-                break;
-                case '/':
-                st.push(op1 / op2);
-                break;
-                case '^':
-                st.push(pow(op1 , op2));
+        switch (c){
+            case '(':
+            {
+                s.push('(');
                 break;
             }
+
+            case ')':
+            {
+                while (s.top( ) != '('){
+                    postfix += s.top( );
+                    s.pop( );
+                }
+                s.pop( );
+                break;
+            }
+
+            case '+':
+            case '-':
+            case '*':
+            case '/':
+            case '^':
+            {
+                while (!s.empty( ) && precedence(c) <= precedence(s.top( ))){
+                    postfix += s.top( );
+                    s.pop( );
+                }
+                s.push(c);
+                break;
+            }
+            default:
+            postfix += c;
         }
     }
-    return st.top( );
+
+    while (!s.empty( )){
+        postfix += s.top( );
+        s.pop( );
+    }
+
+    return postfix;
 }
 
 int main( ){
-    cout << "46+2/5*7+ --> " << postfix("46+2/5*7+") << endl;
+    string infix;
+    cout << "Enter Infix Expression:";
+    getline(cin , infix);
+    cout << "Postfix Expression: " << infixToPostfix(infix) << endl;
     return 0;
 }
