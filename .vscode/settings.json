@@ -118,5 +118,6 @@
   "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "sameLine",
   "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "sameLine",
   "C_Cpp.vcFormat.indent.lambdaBracesWhenParameter": false,
-  "C_Cpp.vcFormat.indent.caseLabels": true
+  "C_Cpp.vcFormat.indent.caseLabels": true,
+  "C_Cpp.errorSquiggles": "disabled"
 }
