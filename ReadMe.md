@@ -303,6 +303,8 @@ Function must be declared before main and can be defined after main or before ma
 
 <hr>
 
+<hr>
+
 ### **_Arrays_**
 
 ### **_String_**
