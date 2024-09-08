@@ -18,7 +18,6 @@
 
 <br><hr><br>
 
-
 ## Basics
 
 **_Input and Output_** :- Let's see a program first then we'll understand each line of code in _detail_.
@@ -298,8 +297,6 @@ Function must be declared before main and can be defined after main or before ma
             printf("Invalid Input");
         }
     }
-
-<hr>
 
 <hr>
 
