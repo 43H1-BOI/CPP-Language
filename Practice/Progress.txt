@@ -1,0 +1,32 @@
+DSA : 
+Data Structures :
+
+    Arrays
+        1-D
+        2-D
+        
+    Stacks
+        Infix To Postix (Not Done)
+        Infix To Prefix (Not Done)
+        Prefix To Infix Evaluation
+        Postfix To Infix Evaluation
+
+    Queues
+        Circular
+        Dequeue (Not Done)
+        Priority (Not Done)
+
+    Linked List
+        Singly : 
+        Doubly :    
+        Circular : 24-09-2024
+
+Algorithms :
+    Sorting :
+        Bubble
+        Insertion
+        Selection
+                
+
+To Do:
+    Organise Files                
