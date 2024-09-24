@@ -14,9 +14,6 @@ public:
     }
 
     ~Node( ) { //  Destructor
-        if (next != NULL) {
-            next = NULL;
-        }
         count--;
     }
 };
@@ -30,56 +27,46 @@ void display(Node*& tail) {
     }
 
     Node* temp = tail->next;
-    do {
+    int curr = 1;
+    while (curr <= Node::count) {
         cout << temp->data << " ";
         temp = temp->next;
-    } while (temp != tail->next);
+        curr++;
+    }
 
     cout << "\n" << Node::count << " Elements";
     cout << endl;
 }
 
+
 // To insert node after any given element 
 void insertByVal(int given , int val , Node*& tail) {
     Node* newN = new Node(val);
-    if (tail == NULL) {
+    if (tail == NULL) { // If LL is Empty
         tail = newN;
         newN->next = newN;
     }
     else {
-        Node* temp = tail;
+        Node* temp = tail->next;
+        int i;
         // 1. Iterate untill not found the given value
-        int i = 1;
-        while (temp->data != given && i <= Node::count) {
+        while (temp != tail) {
+            if (temp->data == given)
+                break;
             temp = temp->next;
-            i++;
-            /*
-            // 2. if loop again reaches to the tail {No element found}
-            if (temp->next == tail) { //{No element found}
-                cout << "Given ELement Not Found !" << endl;
-                // cout << "Enter element again : " ;
-                // cin >> given ;
-                return;
-            }
-            */
         }
 
         if (temp->data == given) { // Element found 
-            if (i == Node::count) { // Element found at last position
-                newN->next = tail->next;
-                temp->next = newN;
+            newN->next = temp->next;
+            temp->next = newN;
+            if (tail->next == newN) { // Element found at last position
                 tail = newN;
-            }
-            else {
-                newN->next = temp->next;
-                temp->next = newN;
             }
             return;
         }
         else { // No element found
             cout << "Given ELement Not Found !" << endl;
-            // cout << "Enter element again : " ;
-            // cin >> given ;
+            delete newN;
             return;
         }
     }
@@ -87,7 +74,7 @@ void insertByVal(int given , int val , Node*& tail) {
 
 void insertAtHead(int val , Node*& tail) { // Done
     Node* newN = new Node(val);
-    if (tail == NULL) { // If no element present in Circular LL
+    if (tail == NULL) { // If Circular LL is Empty
         tail = newN;
     }
     else {
@@ -98,10 +85,21 @@ void insertAtHead(int val , Node*& tail) { // Done
 }
 
 void deleteAtHead(Node*& tail) {
-    Node* temp = tail->next;
-    tail->next = temp->next;
-    temp->next = NULL;
-    delete temp;
+    if (tail == NULL) {
+        cout << "List is empty" << endl;
+        return;
+    }
+    if (tail->next == tail) {
+        delete tail;
+        tail = NULL;
+    }
+    else {
+
+        Node* temp = tail->next;
+        tail->next = temp->next;
+        temp->next = NULL;
+        delete temp;
+    }
 }
 
 
@@ -111,8 +109,8 @@ int main( ) {
     insertByVal(5 , 3 , tail);
     display(tail);
 
-    insertAtHead(2 , tail);
-    display(tail);
+    // insertAtHead(2 , tail);
+    // display(tail);
 
     insertByVal(3 , 4 , tail);
     display(tail);
