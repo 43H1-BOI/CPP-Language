@@ -3,6 +3,7 @@
 #include <cstring>
 #include <cstdlib>
 using namespace std;
+
 struct n {// node declaration {
     int p;
     int info;
@@ -13,19 +14,19 @@ private:
    //Declare a front pointer f and initialize it to NULL.
     n* f;
 public:
-    Priority_Queue( ){ //constructor
+    Priority_Queue( ) { //constructor
         f = NULL;
     }
-    void insert(int i , int p){
+    void insert(int i , int p) {
         n* t , * q;
         t = new n;
         t->info = i;
         t->p = p;
-        if (f == NULL || p < f->p){
+        if (f == NULL || p < f->p) {
             t->l = f;
             f = t;
         }
-        else{
+        else {
             q = f;
             while (q->l != NULL && q->l->p <= p)
                 q = q->l;
@@ -33,44 +34,44 @@ public:
             q->l = t;
         }
     }
-    void del( ){
+    void del( ) {
         n* t;
         if (f == NULL) //if queue is null
             cout << "Queue Underflow\n";
-        else{
+        else {
             t = f;
             cout << "Deleted item is: " << t->info << endl;
             f = f->l;
             free(t);
         }
     }
-    void show( ){ //print queue
+    void show( ) { //print queue
         n* ptr;
         ptr = f;
         if (f == NULL)
             cout << "Queue is empty\n";
-        else{
+        else {
             cout << "Queue is :\n";
             cout << "Priority Item\n";
-            while (ptr != NULL){
+            while (ptr != NULL) {
                 cout << ptr->p << " " << ptr->info << endl;
                 ptr = ptr->l;
             }
         }
     }
 };
-int main( ){
+int main( ) {
     int c , i , p;
     Priority_Queue pq;
     //perform switch opeartion
-    do{
+    do {
         cout << "1.Insert\n";
         cout << "2.Delete\n";
         cout << "3.Display\n";
         cout << "4.Exit\n";
         cout << "Enter your choice : ";
         cin >> c;
-        switch (c){
+        switch (c) {
             case 1:
             cout << "Input the item value to be added in the queue : ";
             cin >> i;
