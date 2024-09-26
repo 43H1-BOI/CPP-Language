@@ -133,8 +133,8 @@ void Multiply(Matrix m1 , Matrix m2){
 
 void Matrix::Transpose( ){
     int trans[columns][rows];
-    cout << endl;
-    cout << "Transpose of Matrix :" << endl;
+    // cout << endl;
+    // cout << "Transpose of Matrix :" << endl;
 
     for (int i = 0; i < columns; i++){
         for (int j = 0; j < rows; j++){
@@ -165,41 +165,15 @@ int main( ){
         cin >> choice;
 
         switch (choice){
-            case 1: // For Display of Matrix
-            {
-                int choice2;
-                do{
-                    cout << endl;
-                    cout << "Menu:" << endl;
-                    cout << "1. Display 1st Matrix" << endl;
-                    cout << "2. Display 2nd Matrix" << endl;
-                    cout << "3. Exit" << endl;
+            case 1: {// For Display of Matrix
+                cout << endl;
+                cout << "Displaying 1st Matrix : " << endl;
+                M1.Display( );
+                cout << endl;
 
-                    cout << "Enter your choice: ";
-                    cin >> choice2;
+                cout << "Displaying 2nd Matrix : " << endl;
+                M2.Display( );
 
-                    switch (choice2){
-                        case 1:
-                        cout << endl;
-                        cout << "Displaying 1st Matrix : " << endl;
-                        M1.Display( );
-                        break;
-
-                        case 2:
-                        cout << endl;
-                        cout << "Displaying 2nd Matrix : " << endl;
-                        M2.Display( );
-                        break;
-
-                        case 3:
-                        cout << "Exiting Display Section." << endl;
-                        break;
-
-                        default:
-                        cout << "Invalid choice. Please try again." << endl;
-
-                    }
-                } while (choice2 != 3);
                 break;
             }
 
@@ -213,37 +187,13 @@ int main( ){
             Multiply(M1 , M2);
             break;
 
-            case 4: // For Transpose of Matrix
-            {
-                int choice2;
-                do{
-                    cout << endl;
-                    cout << "Menu:" << endl;
-                    cout << "1. Transpose of 1st Matrix" << endl;
-                    cout << "2. Transpose of 2nd Matrix" << endl;
-                    cout << "3. Exit" << endl;
+            case 4:{ // For Transpose of Matrix
+                cout << "1. Transpose of 1st Matrix" << endl;
+                M1.Transpose( );
+                cout << endl;
 
-                    cout << "Enter your choice: ";
-                    cin >> choice2;
-
-                    switch (choice2){
-                        case 1:
-                        M1.Transpose( );
-                        break;
-
-                        case 2:
-                        M2.Transpose( );
-                        break;
-
-                        case 3:
-                        cout << "Exiting Transpose Section." << endl;
-                        break;
-
-                        default:
-                        cout << "Invalid choice. Please try again." << endl;
-
-                    }
-                } while (choice2 != 3);
+                cout << "2. Transpose of 2nd Matrix" << endl;
+                M2.Transpose( );
                 break;
             }
 

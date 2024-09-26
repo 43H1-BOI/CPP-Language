@@ -1,4 +1,4 @@
-/* Assignment 2 */
+/* Assignment 4 */
 
 /*
     Write a menu  driven program to perform following:
@@ -14,34 +14,51 @@ using namespace std;
 
 class Matrix
 {
-    int mat[3][3];
+    int row , column;
+    // Dynamically Allocating 2D Array
+    int** mat = new int* [row];
     static int count;
 
 public:
     Matrix( );
+    ~Matrix( ){
+        for (int i = 0; i < row; ++i){
+            delete[ ] mat[i];
+        }
+        delete[ ] mat;
+        mat = NULL;
+    }
     void Display( );
     void Transpose( );
     friend void Add(Matrix m1 , Matrix m2);
     friend void Multiply(Matrix m1 , Matrix m2);
 };
 
-Matrix::Matrix( ){
+Matrix::Matrix( ){ // Default Constructor
     count++;
+    cout << "Operating on Matrix " << count << ".\n" << endl;
+    cout << "Enter number of Rows : ";
+    cin >> row;
+    cout << "Enter number of Columns : ";
+    cin >> column;
+
     cout << "Input Elements of Matrix " << count << ":" << endl;
 
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
+    for (int i = 0; i < row; i++){
+        for (int j = 0; j < column; j++){
+            mat[i] = new int[column];
             cout << "Enter Element(" << i + 1 << "," << j + 1 << "):";
             cin >> mat[i][j];
         }
     }
+    cout << endl;
 }
 
 void Matrix::Display( ){
     cout << "Elements in Matrix Are : " << endl;
 
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
+    for (int i = 0; i < row; i++){
+        for (int j = 0; j < column; j++){
             cout << mat[i][j] << "  ";
         }
         cout << endl;
@@ -49,41 +66,51 @@ void Matrix::Display( ){
 }
 
 void Add(Matrix m1 , Matrix m2){
-    int sum[3][3];
-    cout << endl;
-    cout << "Addition of Matrix :" << endl;
-
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
-            sum[i][j] = m1.mat[i][j] + m2.mat[i][j];
-            cout << sum[i][j] << "  ";
-        }
+    if (m1.row == m2.row && m1.column == m2.column){
+        int sum[m1.row][m1.column];
         cout << endl;
+        cout << "Addition of Matrix :" << endl;
+
+        for (int i = 0; i < m1.row; i++){
+            for (int j = 0; j < m1.column; j++){
+                sum[i][j] = m1.mat[i][j] + m2.mat[i][j];
+                cout << sum[i][j] << "  ";
+            }
+            cout << endl;
+        }
+    }
+    else{
+        cout << "Addition of Matrix not Possible." << endl;
     }
 }
 
 void Multiply(Matrix m1 , Matrix m2){
-    int mult[3][3] = { 0 };
-    cout << endl;
-    cout << "Multiplication of Matrix :" << endl;
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
-            for (int k = 0; k < 3; k++){
-                mult[i][j] += m1.mat[i][k] * m2.mat[k][j];
-            }
-            cout << mult[i][j] << "  ";
-        }
+    if (m1.column == m2.row){
+        int mult[3][3] = { 0 };
         cout << endl;
+        cout << "Multiplication of Matrix :" << endl;
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                for (int k = 0; k < 3; k++){
+                    mult[i][j] += m1.mat[i][k] * m2.mat[k][j];
+                }
+                cout << mult[i][j] << "  ";
+            }
+            cout << endl;
+        }
+    }
+    else{
+        cout << "Multiplication of Matrix not Possible." << endl;
     }
 }
 
 void Matrix::Transpose( ){
-    int trans[3][3];
+    int trans[column][row];
     cout << endl;
     cout << "Transpose of Matrix :" << endl;
 
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
+    for (int i = 0; i < row; i++){
+        for (int j = 0; j < column; j++){
             trans[i][j] = mat[j][i];
             cout << trans[i][j] << "  ";
         }
