@@ -209,19 +209,21 @@ void makeCycle(Node*& head , int pos) {
 void appendKNodes(Node*& head , int k) {
     int pos = Node::count - k;
     int curr = 1;
-    Node* temp = head;
+
+    Node* newTail = head;
     while (curr > pos) {
-        temp = temp->next;
+        newTail = newTail->next;
         curr++;
     }
-    Node* temp2 = temp->next;
-    Node* temp3 = temp2;
-    temp->next = NULL;
-    while (temp2->next != NULL) {
-        temp2 = temp2->next;
+
+    Node* newHead = newTail->next;
+    Node* tail = newHead;
+    while (tail->next != NULL) {
+        tail = tail->next;
     }
-    temp2->next = head;
-    head = temp3;
+    tail->next = newHead;
+    newTail->next = NULL;
+    head = newHead;
 }
 
 int main( ) {
@@ -238,7 +240,9 @@ int main( ) {
     display(head);
 
     insertAtPos(8 , 3 , head);
+    deleteCycle(head);
     display(head);
+
 
     appendKNodes(head , 3);
     display(head);
