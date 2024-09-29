@@ -205,13 +205,13 @@ void makeCycle(Node*& head , int pos) {
     temp->next = startNode;
 }
 
-// Will Do It
+// Done
 void appendKNodes(Node*& head , int k) {
     int pos = Node::count - k;
     int curr = 1;
 
     Node* newTail = head;
-    while (curr > pos) {
+    while (curr < pos) {
         newTail = newTail->next;
         curr++;
     }
@@ -221,9 +221,32 @@ void appendKNodes(Node*& head , int k) {
     while (tail->next != NULL) {
         tail = tail->next;
     }
-    tail->next = newHead;
+    tail->next = head;
     newTail->next = NULL;
     head = newHead;
+    // return newHead;
+}
+
+// this will return Node*
+Node* appendKNode(Node*& head , int k) {
+    int pos = Node::count - k;
+    int curr = 1;
+
+    Node* newTail = head;
+    while (curr < pos) {
+        newTail = newTail->next;
+        curr++;
+    }
+
+    Node* newHead = newTail->next;
+    Node* tail = newHead;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+    tail->next = head;
+    newTail->next = NULL;
+    // head = newHead;
+    return newHead;
 }
 
 int main( ) {
@@ -240,11 +263,12 @@ int main( ) {
     display(head);
 
     insertAtPos(8 , 3 , head);
-    deleteCycle(head);
+    // deleteCycle(head);
     display(head);
 
-
-    appendKNodes(head , 3);
-    display(head);
+    cout << "\nAppending 3 Node from last to Start : " << endl;
+    Node* newHead = appendKNode(head , 3);
+    // appendKNodes(head , 2);
+    display(newHead);
 
 }
