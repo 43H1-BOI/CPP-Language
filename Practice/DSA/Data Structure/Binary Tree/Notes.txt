@@ -1,0 +1,8 @@
+Binary Tree 
+
+Transversal :
+    Preorder : R' L R
+    Inorder : L R' R
+    Postorder : L R R'
+
+    
