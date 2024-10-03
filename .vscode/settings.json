@@ -119,5 +119,6 @@
   "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "sameLine",
   "C_Cpp.vcFormat.indent.lambdaBracesWhenParameter": false,
   "C_Cpp.vcFormat.indent.caseLabels": true,
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "disabled",
+  "livePreview.defaultPreviewPath": "/Practice/4_Conditional/index.html"
 }
