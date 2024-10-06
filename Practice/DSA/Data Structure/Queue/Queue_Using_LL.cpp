@@ -55,7 +55,7 @@ void display(Node*& front , Node*& rear) {
     do {
         cout << temp->data << " ";
         temp = temp->next;
-    } while (temp != NULL);
+    } while (temp != nullptr);
     cout << "\nTotal Elements : " << Node::count << endl;
 }
 
