@@ -121,6 +121,17 @@ Node* insertNode(int val , Node*& root) {
 }
 */
 
+int search(Node*& root , int element) {
+    if (root == NULL)
+        return 0;
+    else if (root->data == element) // element found
+        return 1;
+    else if (root->data > element) // element is smaller , on the left side
+        return search(root->left , element);
+    else // element is bigger , on the right side
+        return search(root->right , element);
+}
+
 int main( ) {
 
     Node* root = NULL;
@@ -131,6 +142,13 @@ int main( ) {
     root = insertByPtr(root , 10);
     root = insertByPtr(root , 70);
     root = insertByPtr(root , 1);
+
+    if (search(root , 70)) {
+        cout << "Element Found" << endl;
+    }
+    else {
+        cout << "Element Not Found" << endl;
+    }
 
 /*
     // For fun() returnning nothing
