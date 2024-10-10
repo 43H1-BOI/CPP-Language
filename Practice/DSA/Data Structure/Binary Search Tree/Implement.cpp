@@ -132,6 +132,50 @@ int search(Node*& root , int element) {
         return search(root->right , element);
 }
 
+int minElement(Node*& root) {
+    if (root == NULL) { // Empty
+        return -1;
+    }
+    Node* curr = root;
+
+    while (curr->left != NULL) {
+        curr = curr->left;
+    }
+
+    return curr->data;
+}
+
+int maxElement(Node*& root) {
+    if (root == NULL) { // Empty
+        return -1;
+    }
+    Node* curr = root;
+
+    while (curr->right != NULL) {
+        curr = curr->right;
+    }
+
+    return curr->data;
+}
+
+void deleteNode(Node* root , int val) {
+    if (root == NULL) {
+        // cout << "BST is Empty !" << endl;
+        return;
+    }
+    else if (val == root->data) {
+        Node* temp = root;
+        root == NULL;
+        delete temp;
+    }
+    else if (val < root->data) {
+        deleteNode(root->left , val);
+    }
+    else if (val > root->data) {
+        deleteNode(root->right , val);
+    }
+}
+
 int main( ) {
 
     Node* root = NULL;
@@ -181,5 +225,13 @@ int main( ) {
     inorder(root);
     cout << endl;
 
+    cout << "Min Element : " << minElement(root) << endl;
+    cout << "Max Element : " << maxElement(root) << endl;
+
+    deleteNode(root , 70);
+
+    cout << "Inorder : ";
+    inorder(root);
+    cout << endl;
     return 0;
 }
