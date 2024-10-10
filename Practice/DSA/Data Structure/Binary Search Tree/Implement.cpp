@@ -43,7 +43,6 @@ void postorder(Node* root) {
     cout << root->data << " ";
 }
 
-
 Node* insertByPtr(Node*& root , int val) { // Insert Fun returning Node*
     if (root == NULL)
         return new Node(val);
@@ -68,58 +67,6 @@ Node* insertByPtr(Node*& root , int val) { // Insert Fun returning Node*
 
     */
 }
-
-/* // Not Working (will fix this later)
-void insert(Node*& root , int val) {
-    if (root == NULL)
-        return;
-
-    if (root->data < val)
-        insert(root->right , val);
-
-    else if (root->data > val)
-        insert(root->left , val);
-
-}
-*/
-
-/*
-Node* insertNode(int val , Node*& root) {
-    Node* newNode = new Node(val);
-    if (root == NULL) {
-        root = newNode;
-        return;
-    }
-    Node* temp = root;
-    while (temp->left != NULL || temp->right != NULL) {
-        if (temp->data > val) {
-
-        }
-        else if (temp->data < val) {
-
-        }
-
-
-
-        if (temp->left == NULL) {
-            if (val >= temp->data) {
-                temp->right = newNode;
-            }
-        }
-        else if (temp->right != NULL) {
-            if (temp->data < val) {
-                temp->left = newNode;
-            }
-        }
-        else {
-            temp = temp->left;
-        }
-
-
-    }
-
-}
-*/
 
 int search(Node*& root , int element) {
     if (root == NULL)
@@ -158,22 +105,44 @@ int maxElement(Node*& root) {
     return curr->data;
 }
 
-void deleteNode(Node* root , int val) {
-    if (root == NULL) {
+Node* deleteNode(Node*& root , int val) {
+    if (root == NULL) { // node is NULL
         // cout << "BST is Empty !" << endl;
-        return;
+        return NULL;
     }
-    else if (val == root->data) {
-        Node* temp = root;
-        root == NULL;
-        delete temp;
+
+    if (root->data > val) { // value will be on left side
+        root->left = deleteNode(root->left , val);
     }
-    else if (val < root->data) {
-        deleteNode(root->left , val);
+    else if (root->data < val) { // value will be on right side
+        root->right = deleteNode(root->right , val);
     }
-    else if (val > root->data) {
-        deleteNode(root->right , val);
+    else if (root->data == val) { // value found
+        if (root->left == NULL && root->right == NULL) { // is leaf node
+            Node* temp = root;
+            delete temp;
+            return NULL;
+
+        }
+        else if (root->left == NULL) { // right node contains something
+            Node* temp = root->right;
+            delete root;
+            return temp;
+
+        }
+        else if (root->right == NULL) { // left node contains something
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        else if (root->left != NULL && root->right != NULL) {
+            int minRight = minElement(root->right);
+            root->data = minRight;
+            deleteNode(root->right , minRight);
+
+        }
     }
+    return root;
 }
 
 int main( ) {
@@ -193,15 +162,6 @@ int main( ) {
     else {
         cout << "Element Not Found" << endl;
     }
-
-/* // For fun() returning nothing
-    insert(root , 30);
-    insert(root , 30);
-    insert(root , 20);
-    insert(root , 20);
-    insert(root , 50);
-    insert(root , 50);
-*/
 
 /* Starting Insertion(Manual)
     // Node* root = new Node(1);
@@ -228,7 +188,7 @@ int main( ) {
     cout << "Min Element : " << minElement(root) << endl;
     cout << "Max Element : " << maxElement(root) << endl;
 
-    deleteNode(root , 70);
+    deleteNode(root , 30);
 
     cout << "Inorder : ";
     inorder(root);
