@@ -3,36 +3,25 @@ using namespace std;
 
 int BinarySearch(int arr[ ] , int first , int last , int find) {
     if (first > last) {
-        cout << " != " << endl;
         return -1;
     }
 
-    cout << "recc call" << endl;
     int mid = (first + last) / 2;
     int index;
 
-    cout << "first = " << first << " ";
-    cout << "mid = " << mid << " ";
-    cout << "last = " << last << " ";
-    cout << endl;
-
     if (arr[mid] == find) {
-        cout << " = " << endl;
         return mid;
     }
     else if (arr[mid] < find) {
-        cout << " + " << endl;
         index = BinarySearch(arr , mid + 1 , last , find);
     }
     else if (arr[mid] > find) {
-        cout << " - " << endl;
         index = BinarySearch(arr , first , mid - 1 , find);
     }
     else { // this one is not running
         return -1;
     }
 
-    cout << "returned : " << index;
     return index;
 }
 
