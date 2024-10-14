@@ -61,4 +61,27 @@ h. sort, merge, update, reverse
 
 15. Write a program to implement linear Search.
 
-16. Write a program to implement Binary Search with recursion.
+16. Write a program to implement Binary Search with recursion. 
+
+17. Write a program to implement Binary Search without recursion.
+
+18. Write a program to implement Bubble Sort.
+
+19. Write a program to implement Selection Sort.
+
+20. Write a program to implement Insertion Sort.
+
+21. Write a program to merge two sorted array into one single array.
+
+22. Write a program to implement Merge Sort.
+
+23. Write a program to implement Quick Sort.
+
+24. Write a program to implement Radix Sort.
+
+25. Write a menu driven program to implement following operations on Binary Search Tree:
+a. Insert an element
+b. Pre Order Traversal
+c. In Order Traversal
+d. Post Order Traversal
+e. Delete an element
