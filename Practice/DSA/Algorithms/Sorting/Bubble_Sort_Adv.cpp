@@ -1,40 +1,48 @@
 #include<iostream>
+#include<conio.h>
 using namespace std;
 
-#include<conio.h>
-
-void display(int arr[], int size){
-	for(int i = 0; i < size; i++){
-		cout << arr[i] << "  ";
+void getArr(int arr[ ] , int size) {
+	for (int i = 0; i < size; i++) {
+		cin >> arr[i];
 	}
+}
+
+void display(int arr[ ] , int size) {
+	// for (auto i : arr) {
+	// 	cout << i << "  ";
+	// }
+	for (int i = 0; i < size; i++)
+		cout << arr[i] << " ";
+
 	cout << endl;
 }
 
-void bubbleSort2(int arr[], int size){
-	for(int i = 0; i < size-1; i++){
-		// int swapped;
-		for(int j = 0 ; j < size - i - 1; j++){
-		// swapped = 0;
-			if(arr[j] > arr[j+1]){
+void bubbleSortAdv(int arr[ ] , int size) {
+	for (int i = 0; i < size - 1; i++) {
+		bool flag;
+		for (int j = 0; j < size - i - 1; j++) {
+			flag = false;
+			if (arr[j] > arr[j + 1]) {
 				int temp = arr[j];
-				arr[j] = arr[j+1];
-				arr[j+1] = temp;
-			  //	swapped = 1;
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+				flag = true;
 			}
 		}
-		display(arr,size);
-		/*
-		if(!swapped){
+		display(arr , size);
+
+		if (!flag) {
 			break;
 		}
-		*/
+
 	}
 }
 
-void bubbleSort(int arr[], int size){
-	for(int i = 0 ; i < size ; i++){
-		for(int j = i+1 ; j < size ; j++){
-			if(arr[i] > arr[j]){
+void bubbleSortBasic(int arr[ ] , int size) {
+	for (int i = 0; i < size; i++) {
+		for (int j = i + 1; j < size; j++) {
+			if (arr[i] > arr[j]) {
 				int temp = arr[i];
 				arr[i] = arr[j];
 				arr[j] = temp;
@@ -43,11 +51,14 @@ void bubbleSort(int arr[], int size){
 	}
 }
 
-int main(){
-	clrscr();
-	int size = 10;
-	int arr[10] = {1,13,51,9,6,2,0,24,3,27};
-	bubbleSort2(arr,size);
-	display(arr,size);
+int main( ) {
+	int size;
+	cin >> size;
+	int* arr = new int[size];
+
+	getArr(arr , size);
+
+	bubbleSortAdv(arr , size);
+	display(arr , size);
 	return 0;
 }

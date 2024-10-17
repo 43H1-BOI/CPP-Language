@@ -1,0 +1,13 @@
+Binary Tree 
+
+Transversal :
+    Preorder : R' L R
+    Inorder : L R' R
+    Postorder : L R R'
+
+Binary Search Tree : 
+    This type of Binary Tree has some rules 
+
+    1. data in left node is smaller than data in parent node (Left < Parent)
+    2. data in right node is greater than data in parent node (Right > Parent)
+    3. duplicate data is not allowed

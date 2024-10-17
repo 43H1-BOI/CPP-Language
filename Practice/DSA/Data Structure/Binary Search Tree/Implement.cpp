@@ -43,27 +43,27 @@ void postorder(Node* root) {
     cout << root->data << " ";
 }
 
-Node* insertByPtr(Node*& root , int val) { // Insert Fun returning Node*
+Node* insertNode(Node*& root , int val) { // Insert Fun returning Node*
     if (root == NULL)
         return new Node(val);
 
     if (root->data < val)
-        root->right = insertByPtr(root->right , val);
+        root->right = insertNode(root->right , val);
 
     else if (root->data > val)
-        root->left = insertByPtr(root->left , val);
+        root->left = insertNode(root->left , val);
 
     return root;
 
     /* Usage of Above Function in Main()
 
     // For Fun() returning Node*
-    // root = insertByPtr(root , 33);
-    // root = insertByPtr(root , 33);
-    // root = insertByPtr(root , 60);
-    // root = insertByPtr(root , 60);
-    // root = insertByPtr(root , 10);
-    // root = insertByPtr(root , 10);
+    // root = insertNode(root , 33);
+    // root = insertNode(root , 33);
+    // root = insertNode(root , 60);
+    // root = insertNode(root , 60);
+    // root = insertNode(root , 10);
+    // root = insertNode(root , 10);
 
     */
 }
@@ -145,16 +145,24 @@ Node* deleteNode(Node*& root , int val) {
     return root;
 }
 
+int countNodes(Node*& root) {
+    if (root == NULL) return 0;
+    int total = countNodes(root->left);
+    total += countNodes(root->right);
+
+    return total + 1;
+}
+
 int main( ) {
 
     Node* root = NULL;
 
-    root = insertByPtr(root , 33);
-    root = insertByPtr(root , 30);
-    root = insertByPtr(root , 60);
-    root = insertByPtr(root , 10);
-    root = insertByPtr(root , 70);
-    root = insertByPtr(root , 1);
+    root = insertNode(root , 33);
+    root = insertNode(root , 30);
+    root = insertNode(root , 60);
+    root = insertNode(root , 10);
+    root = insertNode(root , 70);
+    root = insertNode(root , 1);
 
     if (search(root , 70)) {
         cout << "Element Found" << endl;
@@ -193,5 +201,7 @@ int main( ) {
     cout << "Inorder : ";
     inorder(root);
     cout << endl;
+
+    cout << "Total Nodes = " << countNodes(root) << endl;
     return 0;
 }
