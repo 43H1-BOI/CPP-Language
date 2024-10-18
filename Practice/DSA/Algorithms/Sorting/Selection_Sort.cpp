@@ -1,15 +1,15 @@
 #include<iostream>
 using namespace std;
 
-void SelectionSort(int* arr , int size){
-    for (int i = 0; i < size - 1; i++){
+void SelectionSort(int* arr , int size) {
+    for (int i = 0; i < size - 1; i++) {
         int min_index = i;
-        for (int j = i + 1; j < size; j++){
-            if (arr[j] < arr[min_index]){
+        for (int j = i + 1; j < size; j++) {
+            if (arr[j] < arr[min_index]) {
                 min_index = j;
             }
         }
-        if (arr[min_index] < arr[i]){
+        if (arr[min_index] < arr[i]) {
             int temp = arr[i];
             arr[i] = arr[min_index];
             arr[min_index] = temp;
@@ -17,14 +17,31 @@ void SelectionSort(int* arr , int size){
     }
 }
 
-int main( ){
+void SelectionSort(int arr[ ] , int size) {
+    for (int i = 0; i < size - 1; i++) {
+        int min = i;
+        for (int j = i + 1; j < size; j++) {
+            if (arr[j] < arr[min]) {
+                min = j;
+            }
+        }
+        if (arr[i] != arr[min]) { // swap
+            int temp = arr[min];
+            arr[min] = arr[i];
+            arr[i] = temp;
+        }
+    }
+}
+
+
+int main( ) {
     int size;
     cin >> size;
 
     // To Get Elements in Array
     int arr[size];
     cout << "enter Elements in array : " << endl;
-    for (int i = 0; i < size; i++){
+    for (int i = 0; i < size; i++) {
         cin >> arr[i];
     }
 
@@ -46,7 +63,7 @@ int main( ){
 
 
         // To Print Elements from Array
-    for (int i = 0; i < size; i++){
+    for (int i = 0; i < size; i++) {
         cout << arr[i] << "  ";
     } cout << endl;
 
