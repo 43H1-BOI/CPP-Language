@@ -12,13 +12,6 @@ void QuickSort(int arr[ ] , int start , int end) {
         return;
     }
 
-    /*
-    Quick  Sort :- Divide And Conquor Algo
-        1. Select a Pivot Element
-        2. Place the Pivot Element at Correct Position
-        3. Recursively Follow above steps to place each element at it's correct position
-    */
-
     int pIndex = start; // correct index of pivotElement
     int pivotElement = arr[end]; // element to be placed on correct position
 
@@ -51,8 +44,14 @@ int main( ) {
         cin >> arr[i];
     }
 
-    // Divide and Conquor Algo , Recursive Function
+    // Divide and Conquor Algo , Recursive Function 
     QuickSort(arr , 0 , size - 1);
+    /*
+    Quick  Sort :- Divide And Conquor Algo
+        1. Select a Pivot Element
+        2. Place the Pivot Element at Correct Position
+        3. Recursively Follow above steps to place each element at it's correct position
+    */
 
     for (int i = 0; i < size; i++) {
         cout << arr[i] << "  ";
