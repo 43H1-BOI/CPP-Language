@@ -7,6 +7,12 @@ void swap(int& x , int& y) {
     y = temp;
 }
 
+/*
+Insertion Sort :-
+    Efficient for Sorting Small no. of Elements
+
+*/
+
 void InsertionSort(int arr[ ] , int size) {
     for (int i = 1; i < size; i++) {
         if (arr[i - 1] > arr[i]) {

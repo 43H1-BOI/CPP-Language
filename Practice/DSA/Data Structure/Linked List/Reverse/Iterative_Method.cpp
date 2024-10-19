@@ -28,7 +28,6 @@ void insertAtHead(int val , Node*& head) { // To Insert at Head
         newN->next = head;
     }
     head = newN;
-
 }
 
 void deleteAtHead(Node*& head) { // Delete at Head

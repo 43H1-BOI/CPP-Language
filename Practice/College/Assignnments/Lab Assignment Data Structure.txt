@@ -1,7 +1,7 @@
 ﻿Lab Assignment Data Structure
 
 
-1. Write a menu driven program to implement following operations on array :
+1. Write a menu driven program to implement following operations on array : - Done
 a. Create an array
 b. Insert an element
 c. Delete an element
@@ -10,32 +10,32 @@ e. Find maximum element
 f. Find minimum element
 
 
-2. Write a menu driven program to implement following operations on Matrix :
+2. Write a menu driven program to implement following operations on Matrix : - Done
 a. Add two matrix
 b. Multiply two matrix
 c. Transpose a matrix
 d. Display matrix
 
-3. Write program to implement stack-using array with following operations :
+3. Write program to implement stack-using array with following operations : - Done
 a. Push
 b. Pop
 c. display
 
-4. Write a menu driven program to implement stack using linked list.
+4. Write a menu driven program to implement stack using linked list. - Done
 
-5. Write a program to convert infix expressions to postfix expressions.
+5. Write a program to convert infix expressions to postfix expressions. - Done
 
-6. Write a program to convert infix expressions to prefix expressions.
+6. Write a program to convert infix expressions to prefix expressions. - Done
 
-7. Write a menu driven program to implement a queue using arrays.
+7. Write a menu driven program to implement a queue using arrays. - Done
 
-8. Write a menu driven program to implement Circular queue.
+8. Write a menu driven program to implement Circular queue. - Done
 
-9. Write a menu driven program to implement Priority queue.
+9. Write a menu driven program to implement Priority queue. - Done
 
-10. Write a menu driven program to implement Dequeue
+10. Write a menu driven program to implement Dequeue. - Done
 
-11. Write a menu driven program to implement following operations on Singly Linked List
+11. Write a menu driven program to implement following operations on Singly Linked List - Done
 a. Create a list
 b. Append Element
 c. Add element at beginning
@@ -45,7 +45,7 @@ f. Display the elements of list
 g. Delete an element
 h. sort, merge, update, reverse
 
-12. Write a menu driven program to implement a queue using Linked List.
+12. Write a menu driven program to implement a queue using Linked List. - Done
 
 13. Write a menu driven program to implement following operations on Doubly Linked List.
 a. Create a list
@@ -57,19 +57,19 @@ f. Display the elements of list
 g. Delete an element
 h. sort, merge, update, reverse
 
-14. Write a menu driven program to implement Circular Linked List.
+14. Write a menu driven program to implement Circular Linked List. 
 
-15. Write a program to implement linear Search.
+15. Write a program to implement linear Search. Done
 
-16. Write a program to implement Binary Search with recursion. 
+16. Write a program to implement Binary Search with recursion. Done
 
-17. Write a program to implement Binary Search without recursion.
+17. Write a program to implement Binary Search without recursion. Done
 
-18. Write a program to implement Bubble Sort.
+18. Write a program to implement Bubble Sort. Done
 
-19. Write a program to implement Selection Sort.
+19. Write a program to implement Selection Sort. Done
 
-20. Write a program to implement Insertion Sort.
+20. Write a program to implement Insertion Sort. Done
 
 21. Write a program to merge two sorted array into one single array.
 
