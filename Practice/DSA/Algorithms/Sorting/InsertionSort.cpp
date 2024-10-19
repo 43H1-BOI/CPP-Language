@@ -9,28 +9,13 @@ void swap(int& x , int& y) {
 
 void InsertionSort(int arr[ ] , int size) {
     for (int i = 1; i < size; i++) {
-        cout << "Main iteration = " << i << endl;
         if (arr[i - 1] > arr[i]) {
-            cout << arr[i - 1] << " " << arr[i] << endl;
-            // swap(arr[i] , arr[i - 1]);
-            { // swapping
-                int temp = arr[i];
-                arr[i] = arr[i - 1];
-                arr[i - 1] = temp;
-            }
-            cout << endl;
+            swap(arr[i] , arr[i - 1]);
 
             int j = i - 1;
             while (j > 0) {
-                cout << "Sub iteration = " << j << endl;
                 if (arr[j - 1] > arr[j]) {
-                    cout << arr[j - 1] << " " << arr[j] << endl;
-                            // swap(arr[j] , arr[j - 1]);
-                    { // swapping
-                        int temp = arr[j];
-                        arr[j] = arr[j - 1];
-                        arr[j - 1] = temp;
-                    }
+                    swap(arr[j] , arr[j - 1]);
                 }
                 else break;
                 j--;

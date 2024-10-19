@@ -1,20 +1,10 @@
 #include<iostream>
 using namespace std;
 
-void SelectionSort(int* arr , int size) {
-    for (int i = 0; i < size - 1; i++) {
-        int min_index = i;
-        for (int j = i + 1; j < size; j++) {
-            if (arr[j] < arr[min_index]) {
-                min_index = j;
-            }
-        }
-        if (arr[min_index] < arr[i]) {
-            int temp = arr[i];
-            arr[i] = arr[min_index];
-            arr[min_index] = temp;
-        }
-    }
+void swap(int& x , int& y) {
+    int temp = x;
+    x = y;
+    y = temp;
 }
 
 void SelectionSort(int arr[ ] , int size) {
@@ -26,13 +16,10 @@ void SelectionSort(int arr[ ] , int size) {
             }
         }
         if (arr[i] != arr[min]) { // swap
-            int temp = arr[min];
-            arr[min] = arr[i];
-            arr[i] = temp;
+            swap(arr[min] , arr[i]);
         }
     }
 }
-
 
 int main( ) {
     int size;
@@ -48,21 +35,6 @@ int main( ) {
     // Find smallest Element from unsorted pat of an array and put it in the Beginning of unsorted part
     SelectionSort(arr , size);
 
-    /*
-        // Selection Sort Basic
-        for (int i = 0; i < size - 1; i++){
-            for (int j = i + 1; j < size; j++){
-                if (arr[i] > arr[j]){
-                    int temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
-                }
-            }
-        }
-    */
-
-
-        // To Print Elements from Array
     for (int i = 0; i < size; i++) {
         cout << arr[i] << "  ";
     } cout << endl;
