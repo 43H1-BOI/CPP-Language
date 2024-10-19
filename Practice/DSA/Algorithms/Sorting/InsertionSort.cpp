@@ -13,11 +13,8 @@ void InsertionSort(int arr[ ] , int size) {
             swap(arr[i] , arr[i - 1]);
 
             int j = i - 1;
-            while (j > 0) {
-                if (arr[j - 1] > arr[j]) {
-                    swap(arr[j] , arr[j - 1]);
-                }
-                else break;
+            while (j > 0 && arr[j - 1] > arr[j]) {
+                swap(arr[j] , arr[j - 1]);
                 j--;
             }
 
@@ -36,7 +33,7 @@ int main( ) {
         cin >> arr[i];
     }
 
-    // 
+    // Iteratively inserting each element of an unsorted array into its correct position in the sorted portion
     InsertionSort(arr , size);
 
     for (int i = 0; i < size; i++) {
