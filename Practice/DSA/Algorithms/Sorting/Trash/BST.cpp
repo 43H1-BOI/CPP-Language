@@ -89,6 +89,55 @@ Node* deleteBST(Node* root , int val) {
     return root;
 }
 
+void  insertNode(Node*& root , int val) {
+    if (root == NULL) {
+        Node* newNode = new Node(val);
+        root = newNode;
+        return;
+    }
+
+    if (val > root->data)
+        insertNode(root->right , val);
+    else if (val < root->data)
+        insertNode(root->right , val);
+
+}
+
+
+void deleteNode(Node*& root , int val) {
+    if (root == NULL) {
+        return;
+    }
+
+    if (val > root->data) {
+        deleteNode(root->right , val);
+    }
+    else if (val < root->data) {
+        deleteNode(root->left , val);
+    }
+    else {
+        if (root->left == NULL && root->right == NULL) {
+            delete root;
+            root = NULL;
+        }
+        else if (root->left == NULL) {
+            Node* temp = root;
+            root = root->right;
+            delete temp;
+        }
+        else if (root->right == NULL) {
+            Node* temp = root;
+            root = root->left;
+            delete temp;
+        }
+        else { // root->left != NULL && root->right != NULL
+            int min = minElement(root->right);
+            root->data = min;
+            deleteNode(root->right , min);
+        }
+    }
+}
+
 void Inorder(Node* root) {
     if (root == NULL) {
         return;
