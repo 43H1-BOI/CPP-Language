@@ -22,8 +22,13 @@ int BinarySearch(int arr[ ] , int size , int find) {
 }
 
 int main( ) {
-    int find;
-    int arr[ ] = { 1,3,4,6,8,9,11,15,20,22,28,31,33,35,38,40,43,46,49,50 };
+    int size;
+    cin >> size;
+    int* arr = new int[size];
+    cout << "Enter Elements in Array : " << endl;
+    for (int i = 0; i < size; i++)
+        cin >> arr[i];
+
 
     cout << "Elements in Array Are : " << endl;
     for (int i : arr)
