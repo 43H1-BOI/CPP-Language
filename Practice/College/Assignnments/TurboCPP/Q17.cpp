@@ -21,6 +21,23 @@ int BinarySearch(int arr[ ] , int size , int find) {
     return -1;
 }
 
+void getArr(int arr[ ] , int size) {
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+}
+
+void display(int arr[ ] , int size) {
+    // for (auto i : arr) {
+    // 	cout << i << "  ";
+    // }
+    for (int i = 0; i < size; i++)
+        cout << arr[i] << " ";
+
+    cout << endl;
+}
+
+
 int main( ) {
     int size;
     cin >> size;
@@ -29,8 +46,8 @@ int main( ) {
     for (int i = 0; i < size; i++)
         cin >> arr[i];
 
-
     cout << "Elements in Array Are : " << endl;
+
     for (int i : arr)
         cout << i << " ";
     cout << endl;
