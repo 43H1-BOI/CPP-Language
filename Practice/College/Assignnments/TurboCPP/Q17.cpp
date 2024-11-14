@@ -3,7 +3,7 @@ using namespace std;
 
 int BinarySearch(int arr[ ] , int size , int find) {
     int f = 0 , l = size - 1 , m;
-    m = size / 2;
+    // m = size / 2; Useless Line
 
     while (f <= l) {
         m = (f + l) / 2;
@@ -39,18 +39,14 @@ void display(int arr[ ] , int size) {
 
 
 int main( ) {
-    int size;
+    int size , find;
     cin >> size;
     int* arr = new int[size];
     cout << "Enter Elements in Array : " << endl;
-    for (int i = 0; i < size; i++)
-        cin >> arr[i];
+    getArr(arr , size);
 
     cout << "Elements in Array Are : " << endl;
-
-    for (int i : arr)
-        cout << i << " ";
-    cout << endl;
+    display(arr , size);
 
     cout << "Enter Element to Search : ";
     cin >> find;

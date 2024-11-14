@@ -8,12 +8,28 @@ void SelectionSort(int arr[ ] , int size) {
                 min = j;
             }
         }
-        if (arr[i] != arr[min]) { // swap
-            int temp = arr[min];
-            arr[min] = arr[i];
-            arr[i] = temp;
+        if (i != min) { // swap
+            swap(arr[min] , arr[i]);
         }
     }
+}
+
+
+void getArr(int arr[ ] , int size) {
+    for (int i = 0; i < size; i++)
+        cin >> arr[i];
+}
+
+void display(int arr[ ] , int size) {
+    for (int i = 0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+void swap(int& x , int& y) {
+    int temp = x;
+    x = y;
+    y = temp;
 }
 
 void main( ) {
@@ -21,17 +37,15 @@ void main( ) {
     cin >> size;
 
     // To Get Elements in Array
-    int arr[size];
+    int* arr = new int[size];
     cout << "enter Elements in array : " << endl;
-    for (int i = 0; i < size; i++) {
-        cin >> arr[i];
-    }
+    getArr(arr , size);
 
-    // Find smallest Element from unsorted pat of an array and put it in the Beginning of unsorted part
+    cout << "Array Before Sorting : " << endl;
+    display(arr , size);
+
     SelectionSort(arr , size);
-
-    for (int i = 0; i < size; i++) {
-        cout << arr[i] << "  ";
-    } cout << endl;
-
+    cout << "Array After Sorting : " << endl;
+    display(arr , size);
+    // Find smallest Element from unsorted pat of an array and put it in the Beginning of unsorted part
 }

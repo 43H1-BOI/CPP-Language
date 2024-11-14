@@ -1,5 +1,16 @@
 #include<iostream.h>
 
+void getArr(int arr[ ] , int size) {
+    for (int i = 0; i < size; i++)
+        cin >> arr[i];
+}
+
+void display(int arr[ ] , int size) {
+    for (int i = 0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
 void swap(int& x , int& y) {
     int temp = x;
     x = y;
@@ -24,19 +35,16 @@ void InsertionSort(int arr[ ] , int size) {
 void main( ) {
     int size;
     cin >> size;
+    int* arr = new int[size];
 
-    // To Get Elements in Array
-    int arr[size];
-    cout << "enter Elements in array : " << endl;
-    for (int i = 0; i < size; i++) {
-        cin >> arr[i];
-    }
+    cout << "Enter Elements in array : " << endl;
+    getArr(arr , size);
 
-    // Iteratively inserting each element of an unsorted array into its correct position in the sorted portion
+    cout << "Array Before Sorting : " << endl;
+    display(arr , size);
+
     InsertionSort(arr , size);
-
-    for (int i = 0; i < size; i++) {
-        cout << arr[i] << "  ";
-    } cout << endl;
-
+    cout << "Array After Sorting : " << endl;
+    display(arr , size);
+    // Iteratively inserting each element of an unsorted array into its correct position in the sorted portion
 }
