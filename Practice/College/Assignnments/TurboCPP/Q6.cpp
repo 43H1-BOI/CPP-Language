@@ -84,11 +84,12 @@ string infixToPrefix(string infix) {
     return postfix;
 }
 
-void main( ) {
+int main( ) {
     string infix;
     cout << "Enter Infix Expression: ";
     getline(cin , infix);
 
     string prefix = infixToPrefix(infix);
     cout << "Prefix Expression: " << prefix << endl;
+    return 0;
 }

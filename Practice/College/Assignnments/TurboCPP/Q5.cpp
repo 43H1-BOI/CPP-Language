@@ -65,9 +65,10 @@ string infixToPostfix(string infix) {
     return postfix;
 }
 
-void main( ) {
+int main( ) {
     string infix;
     cout << "Enter Infix Expression:";
     getline(cin , infix);
     cout << "Postfix Expression: " << infixToPostfix(infix) << endl;
+    return 0;
 }
