@@ -1,89 +1,79 @@
 #include<iostream>
 using namespace std;
 
-class Queue{
+class Queue {
 private:
     int* arr;
-    int front , rare , size;
+    int front , rear , size;
 
 public:
-    Queue( ){ } // Default Cons.
+    Queue( ) { } // Default Cons.
 
-    Queue(int size){ // Parameterized Cons.
+    Queue(int size) { // Parameterized Cons.
         arr = new int[size];
         this->size = size;
-        front = -1;
-        rare = -1;
+        front = rear = -1;
     }
 
-    ~Queue( ){
+    ~Queue( ) {
         delete[ ] arr;
         arr = NULL;
     }
 
-    void enqueue(int value); // To add value from rare side
+    void enqueue(int value); // To add value from rear side
     void dequeue( ); // To remove value from front
     bool isFull( ); // To check if Queue is Full
     bool isEmpty( ); // To check if Queue is Empty
     void display( ); // To Display elements of Queue
 };
 
-void Queue::enqueue(int value){
-    if (isEmpty( )){
-        front++;
-        rare++;
-        arr[front] = value;
+void Queue::enqueue(int value) {
+    if (isEmpty( )) {
+        front = rear = 0;
     }
-    else if (isFull( )){
+    else if (isFull( )) {
         cout << "\nQueue is Full !" << endl;
     }
-    else{
-        rare++;
-        arr[rare] = value;
+    else {
+        rear++;
     }
+    arr[rear] = value;
 }
 
-void Queue::dequeue( ){
-    if (isEmpty( )){
+void Queue::dequeue( ) {
+    if (isEmpty( )) {
         cout << "\nQueue is Already Empty ! " << endl;
         return;
     }
-    else if (front == rare){
-        front--;
-        rare--;
+    else if (front == rear) {
+        front = rear = -1;
     }
-    else{
+    else {
         front++;
-        size++;
+        // size++;
     }
 }
 
-bool Queue::isFull( ){
-    if (rare == size - 1)
-        return true;
-    else
-        return false;
+bool Queue::isFull( ) {
+    return (rear == size - 1);
 }
 
-bool Queue::isEmpty( ){
-    if (front == -1 && rare == -1)
-        return true;
-    else
-        return false;
+bool Queue::isEmpty( ) {
+    return (front == -1 && rear == -1);
 }
 
-void Queue::display( ){
-    if (isEmpty( )){
+void Queue::display( ) {
+    if (isEmpty( )) {
         cout << "Queue is Empty." << endl;
     }
-    else{
-        for (int i = front; i <= rare; i++){
+    else {
+        for (int i = front; i <= rear; i++) {
             cout << arr[i] << "  ";
         }
     }
 }
 
-void ShowMenu( ){
+void ShowMenu( ) {
     cout << endl;
     cout << "Menu : " << endl;
     cout << "0. Show Menu " << endl;
@@ -95,7 +85,7 @@ void ShowMenu( ){
     cout << "6. Exit Program " << endl;
 }
 
-int main( ){
+int main( ) {
 
     int choice = 0;
     int size , value;
@@ -108,14 +98,14 @@ int main( ){
 
     ShowMenu( );
 
-    do{
+    do {
         cout << endl;
         cout << "\nEnter Your Choice : ";
         cin >> choice;
         cout << endl;
 
-        switch (choice){
-            case 0:{
+        switch (choice) {
+            case 0: {
                 ShowMenu( );
                 break;
             }
@@ -143,7 +133,7 @@ int main( ){
                 break;
             }
 
-            case 4:{
+            case 4: {
                 cout << "4. isEmpty() : Check if Queue is Empty or Not " << endl;
                 if (Q.isEmpty( ))
                     cout << "Queue is Empty ." << endl;
@@ -158,7 +148,7 @@ int main( ){
                 break;
             }
 
-            case 6:{
+            case 6: {
                 cout << "Exiting Program ." << endl;
                 break;
             }
