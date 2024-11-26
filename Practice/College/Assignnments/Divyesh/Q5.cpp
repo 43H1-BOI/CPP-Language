@@ -1,10 +1,11 @@
 #include <iostream>
 #include <stack>
 #include <string>
-#include <algorithm>
 using namespace std;
 
-// 6. Write a program to convert infix expressions to prefix expressions.
+/*
+5. Write a program to convert infix expressions to postfix expressions.
+*/
 
 int precedence(char op) {
     if (op == '^')
@@ -19,7 +20,6 @@ int precedence(char op) {
 string infixToPostfix(string infix) {
     stack<char> s;
     string postfix;
-
     for (int i = 0; i < infix.length( ); i++) {
         char c = infix[i];
 
@@ -46,7 +46,7 @@ string infixToPostfix(string infix) {
             case '/':
             case '^':
             {
-                while (!s.empty( ) && precedence(c) < precedence(s.top( ))) {
+                while (!s.empty( ) && precedence(c) <= precedence(s.top( ))) {
                     postfix += s.top( );
                     s.pop( );
                 }
@@ -66,28 +66,10 @@ string infixToPostfix(string infix) {
     return postfix;
 }
 
-string infixToPrefix(string infix) {
-    reverse(infix.begin( ) , infix.end( ));
-    for (int i = 0; i < infix.length( ); i++) {
-        if (infix[i] == '(') {
-            infix[i] = ')';
-        }
-        else if (infix[i] == ')') {
-            infix[i] = '(';
-        }
-    }
-
-    string postfix = infixToPostfix(infix);
-    reverse(postfix.begin( ) , postfix.end( ));
-    return postfix;
-}
-
 int main( ) {
     string infix;
-    cout << "Enter Infix Expression: ";
+    cout << "Enter Infix Expression:";
     getline(cin , infix);
-
-    string prefix = infixToPrefix(infix);
-    cout << "Prefix Expression: " << prefix << endl;
+    cout << "Postfix Expression: " << infixToPostfix(infix) << endl;
     return 0;
 }

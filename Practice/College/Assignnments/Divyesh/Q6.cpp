@@ -4,7 +4,9 @@
 #include <algorithm>
 using namespace std;
 
-// 6. Write a program to convert infix expressions to prefix expressions.
+/*
+6. Write a program to convert infix expressions to prefix expressions.
+*/
 
 int precedence(char op) {
     if (op == '^')
@@ -89,5 +91,6 @@ int main( ) {
 
     string prefix = infixToPrefix(infix);
     cout << "Prefix Expression: " << prefix << endl;
+
     return 0;
 }

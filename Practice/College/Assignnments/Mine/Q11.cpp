@@ -46,7 +46,7 @@ public:
     }
     void insertAtBegin(int data);
     void insertAtEnd(int data);
-    void deleteNode(int data);
+    void deleteNode(int given);
     bool searchNode(int data);
     void display( );
     void reverse( );
@@ -223,7 +223,7 @@ void showMenu( ) {
 
 int main( ) {
     SLL list;
-    int choice;
+    int choice , data;
 
     showMenu( );
     do {
@@ -237,7 +237,6 @@ int main( ) {
             }
 
             case 1: {
-                int data;
                 cout << "Enter data to insert at beginning: ";
                 cin >> data;
                 list.insertAtBegin(data);
@@ -245,7 +244,6 @@ int main( ) {
             }
 
             case 2: {
-                int data;
                 cout << "Enter data to insert at end: ";
                 cin >> data;
                 list.insertAtEnd(data);
@@ -253,7 +251,6 @@ int main( ) {
             }
 
             case 3: {
-                int data;
                 cout << "Enter data to delete: ";
                 cin >> data;
                 list.deleteNode(data);
@@ -261,7 +258,6 @@ int main( ) {
             }
 
             case 4: {
-                int data;
                 cout << "Enter data to search: ";
                 cin >> data;
                 cout << (list.searchNode(data) ? "Element Found" : "Element not Found") << endl;
